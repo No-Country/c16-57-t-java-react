@@ -6,6 +6,8 @@ Aplicación de la cohorte 16 de No Country, Grupo 57 (Java/React)
 ## Frontend
   - React
   - Vite
+  - Estilos: TailwindCSS
+  - Componentes: MUI
 
 ## Instalación
 *Instrucciones de instalación*
