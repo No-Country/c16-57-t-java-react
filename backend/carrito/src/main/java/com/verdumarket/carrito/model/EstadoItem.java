@@ -1,6 +1,6 @@
 package com.verdumarket.carrito.model;
 
-public enum EstadoCarrito {
+public enum EstadoItem {
     ACTIVO,
     INACTIVO
 }

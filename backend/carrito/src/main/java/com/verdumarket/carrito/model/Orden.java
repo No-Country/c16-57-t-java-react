@@ -1,5 +1,8 @@
 package com.verdumarket.carrito.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,11 +13,13 @@ import java.time.ZonedDateTime;
 
 @Entity
 @Data
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Orden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idOrden;
+
     private Long idComprador;
     private Long idVendedor;
     private String celularVendedor;
@@ -22,9 +27,13 @@ public class Orden {
     private String direccion;
     private String celularComprador;
     private String nombre;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "carrito_id")
+
+    @ManyToOne
+    @JoinColumn(name = "idCarrito")
     private Carrito carrito;
+
+    @Enumerated(EnumType.STRING)
     private EstadoOrden estadoOrden;
+
     private ZonedDateTime fechaHora;
 }

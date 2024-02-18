@@ -1,5 +1,6 @@
 package com.verdumarket.carrito.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,13 +16,17 @@ public class ItemPorCarrito {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idItemPorCarrito;
+
     private Long idProducto;
     private String nombreProducto;
     private int cantidad;
     private BigDecimal precio;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "carrito_id")
+    @Enumerated(EnumType.STRING)
+    private EstadoItem estadoItem;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "idCarrito")
     private Carrito carrito;
-    
 }
