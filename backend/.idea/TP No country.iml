@@ -9,5 +9,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-config-server:4.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-commons:4.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:3.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:3.2.2" level="project" />
   </component>
 </module>

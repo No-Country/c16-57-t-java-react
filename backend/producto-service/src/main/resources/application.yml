@@ -9,9 +9,9 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect
   datasource:
-    url: jdbc:mysql://localhost:3306/producto_service?serverTimezone=UTC
-    username: root
-    password: root
+    url: jdbc:mysql://localhost:3308/producto_service?serverTimezone=UTC
+    username: admin
+    password: 542345
 
 eureka:
   client:
