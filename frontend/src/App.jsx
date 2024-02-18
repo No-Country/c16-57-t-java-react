@@ -1,12 +1,16 @@
-import './App.css'
+import { Route, Routes } from "react-router-dom"
+import Landing from "./views/Landing"
+import Home from "./views/Home"
+import Intro from "./views/Intro"
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-       VerduMarket
-      </h1>
-    </>
+    <Routes>
+        <Route path="/" element={<Landing/>}/>
+        <Route path="/intro" element={<Intro/>}/>
+        <Route path="/home" element={<Home/>}/>
+
+    </Routes>
   )
 }
 
