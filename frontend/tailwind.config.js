@@ -5,12 +5,15 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundColor:{
+        '#095012':'#095012',
+      },
       fontFamily:{
         custom:['Rubik','sans-serif']
       }
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require(".pnpm/daisyui@4.7.2_postcss@8.4.35/node_modules/daisyui")],
 }
 
   
