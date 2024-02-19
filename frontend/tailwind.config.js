@@ -3,6 +3,21 @@ export default {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  daisyui: {
+    themes: [
+      {
+        "light": {
+          ...require("daisyui/src/theming/themes")["light"],
+          "primary": "#677B58",
+          "secondary": "#FEBE98",
+          "accent": "#095012",
+          "neutral": "#2D3748",
+          "primary-content": "#FFFFFF",
+          "background": "#F6F6F6",
+        },
+      },
+    ],
+  },
   theme: {
     extend: {
       backgroundColor:{
