@@ -4,17 +4,25 @@ import NavBar2 from "@components/NavBar2";
 
 import AppHeader from "@components/AppHeader";
 
-const Layout = ({ className, children }) => {
+const Layout = ({ 
+  className, 
+  children 
+}) => {
   const location = useLocation();
   const hiddenNavPaths = ["/", "/intro"];
+  const hiddenHeaderPaths = ["/", "/intro"];
 
   const isNavHidden = hiddenNavPaths.includes(location.pathname);
+  const isHeaderHidden = hiddenHeaderPaths.includes(location.pathname);
 
   return (
     <div className={twMerge("flex flex-col h-screen", className)}> 
-      <AppHeader />
+      {/* Hide the header on the intro and landing pages */}
+      {isHeaderHidden ? null : (
+        <AppHeader />
+      )}
 
-      <main className="flex-grow border-red-500">
+      <main className="flex-grow">
         {children}
       </main>
 
