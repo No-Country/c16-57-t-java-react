@@ -32,18 +32,18 @@ export const Stepper = () => {
 
   return (
     <>
-      <div className= 'carousel w-full flex flex-row text-center justify-center '>
+      <div className= 'flex flex-row justify-center w-full text-center carousel '>
         {currentStep!==0 &&  <button 
           onClick={handlePrevStep} 
           disabled={currentStep === 0}
-          className="fixed left-4 transform -translate-y-1/2 text-sm bg-white p-2 rounded-full shadow-md">
-           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-big-left-line" width="40" height="40" viewBox="0 0 24 24" stroke-width="1" stroke="#095012" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          className="fixed p-2 text-sm transform -translate-y-1/2 bg-white rounded-full shadow-md left-4">
+           <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-big-left-line" width="40" height="40" viewBox="0 0 24 24" strokeWidth="1" stroke="#095012" fill="none" strokeLinecap="round" strokeLinejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M12 15v3.586a1 1 0 0 1 -1.707 .707l-6.586 -6.586a1 1 0 0 1 0 -1.414l6.586 -6.586a1 1 0 0 1 1.707 .707v3.586h6v6h-6z" />
   <path d="M21 15v-6" />
 </svg>
           </button>}
-          <div id={currentStep} className="carousel-item justify-center w-full">
+          <div id={currentStep} className="justify-center w-full carousel-item">
         <p className={' font-custom text-lg md:text-2xl lg:text-3xl text-green-700 p-10' }>
           {paragraphs[currentStep]}
         </p>
@@ -55,8 +55,8 @@ export const Stepper = () => {
           {!isLastStep && <button 
           onClick={handleNextStep} 
           disabled={currentStep === paragraphs.length - 1}
-          className='fixed right-4  transform -translate-y-1/2 text-sm bg-white p-2 rounded-full shadow-md'>
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-big-right-line" width="40" height="40" viewBox="0 0 24 24" stroke-width="1" stroke="#095012" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          className='fixed p-2 text-sm transform -translate-y-1/2 bg-white rounded-full shadow-md right-4'>
+          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-big-right-line" width="40" height="40" viewBox="0 0 24 24" strokeWidth="1" stroke="#095012" fill="none" strokeLinecap="round" strokeLinejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M12 9v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-6v-6h6z" />
   <path d="M3 9v6" />
