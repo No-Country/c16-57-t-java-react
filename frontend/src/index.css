@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .active {
+    @apply bg-neutral text-neutral-content border-none;
+  }
+  .active:first-child {
+    @apply rounded-tl-xl;
+  }
+  .active:last-child {
+    @apply rounded-tr-xl;
+  }
+}

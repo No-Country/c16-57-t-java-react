@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
+import NavBar2 from "@components/NavBar2";
 
 import AppHeader from "@components/AppHeader";
 
@@ -13,14 +14,14 @@ const Layout = ({ className, children }) => {
     <div className={twMerge("flex flex-col h-screen", className)}> 
       <AppHeader />
 
-      <main className="flex-grow">
+      <main className="flex-grow border-red-500">
         {children}
       </main>
 
       {/* Hide the footer on the intro and landing pages */}
       {isNavHidden ? null : (
-        <footer className="p-4 text-center bg-accent text-primary-content">
-          NavBar
+        <footer>
+          <NavBar2 />
         </footer>
       )}
     </div>
