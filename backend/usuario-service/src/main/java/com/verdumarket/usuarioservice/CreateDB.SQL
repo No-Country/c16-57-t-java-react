@@ -1,0 +1,1 @@
+create database usuario_service;
