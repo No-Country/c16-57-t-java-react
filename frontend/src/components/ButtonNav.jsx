@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
 
-export const Boton = ({texto,to}) => {
+const ButtonNav = ({
+    texto,
+    to
+  }) => {
   return (
     <>
     <Link to={to}>
@@ -13,3 +16,5 @@ export const Boton = ({texto,to}) => {
     </>
   )
 }
+
+export default ButtonNav;

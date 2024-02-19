@@ -1,4 +1,4 @@
-import { Boton } from '@components/Boton';
+import ButtonNav from '@components/ButtonNav';
 import { Stepper } from '@components/Stepper'
 import imagenIntro from '@/assets/imagenIntro.jpg'
 import logoV from  '@/assets/V.jpg';
@@ -16,8 +16,8 @@ const Intro = () => {
       </section>
       <Stepper/>
       <div className='flex gap-x-4'>
-        <Boton texto="Comprar" to="/comprador/home" />
-        <Boton texto="Vender " to="/vendedor/home" />
+        <ButtonNav texto="Comprar" to="/comprador/home" />
+        <ButtonNav texto="Vender " to="/vendedor/home" />
       </div>
   </div>
 )

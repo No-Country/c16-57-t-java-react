@@ -1,4 +1,4 @@
-import { Boton } from '../components/Boton'
+import ButtonNav from '../components/ButtonNav'
 import image from '@/assets/verduMarket.png'
 import {Link} from 'react-router-dom'
 const Landing = () => {
@@ -8,7 +8,7 @@ const Landing = () => {
 <img src={image} alt="verduMarket" className=' rounded-xl min-w-[500px]' />
 </Link>
 
-<Boton texto="INGRESO" to='/intro'/>
+<ButtonNav texto="INGRESO" to='/intro'/>
 
 </main>
 )}
