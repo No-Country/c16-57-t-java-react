@@ -1,24 +1,41 @@
 import ButtonNav from '@components/ButtonNav';
-import { Stepper } from '@components/Stepper'
+import CarouselIntro from '@components/CarouselIntro'
 import imagenIntro from '@/assets/imagenIntro.jpg'
-import logoV from  '@/assets/V.jpg';
+import AppLogo from '@components/AppLogo';
+
+const introParagraphs = [
+  'El mejor lugar donde se encuentran consumidores y productores de productos orgánicos',
+  'Conectate con el proveedor más cercano a vos, o el que vos quieras',
+  'Vendé tus productos a más personas',
+  'Seleccioná, pedí, pagá',
+  'Ofrecé, vendé, entregá',
+  'Sin vueltas...'
+];
 
 const Intro = () => {
   return (
-    <div className='flex flex-wrap justify-center h-full'>
-      <img
-        src={imagenIntro}
-        alt="Frutas y verduras organicas, verduMarket"
-        className='object-cover object-center w-full h-1/2 md:h-1/2 lg:h-1/2 max-w-1/3 md:max-w-2/3 lg:max-w-full rounded-xl '
-      />
-      <section className='flex flex-col justify-start '>
-        <img src={logoV} alt="logo V, verduMarket" className='items-start w-10 h-10'/>
+    <div className='flex flex-col gap-0 items-center h-dvh bg-[#EDF3ED] mx-6'>
+      <section>
+        <img
+          src={imagenIntro}
+          alt="Frutas y verduras organicas, verduMarket"
+          className="object-cover object-center max-w-2/3"
+        />
       </section>
-      <Stepper/>
-      <div className='flex gap-x-4'>
-        <ButtonNav texto="Comprar" to="/comprador/home" />
-        <ButtonNav texto="Vender " to="/vendedor/home" />
-      </div>
+      
+      <section className="flex flex-col items-center gap-4 mx-auto">
+        <AppLogo />
+        <h2 className="text-2xl font-light text-left text-accent">
+          Frutas y Verduras Orgánicas
+        </h2>
+        <CarouselIntro paragraphs={introParagraphs} intervalMs={2500}/>
+      </section>
+
+      <footer className="flex flex-col w-full gap-2 mb-14">
+          <ButtonNav text="Comprar" to="/comprador/home" />
+          <ButtonNav text="Vender " to="/vendedor/home" variant="outlined"/>
+      </footer>
+
   </div>
 )
 }

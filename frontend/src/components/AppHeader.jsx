@@ -7,7 +7,7 @@ const AppHeader = () => {
       <nav>
         <IconMenu />
       </nav>
-      </header>
+    </header>
   );
 }
 

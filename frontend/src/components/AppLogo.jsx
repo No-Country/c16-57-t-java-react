@@ -1,8 +1,5 @@
 import { twMerge } from "tailwind-merge";
-
 import logoVerduMarket from  '@/assets/logoVerduMarket.png';
-
-
 
 const AppLogo = ({
   /* variant = 'contained'| 'outlined' | 'transparent' */
