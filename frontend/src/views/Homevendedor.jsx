@@ -1,5 +1,5 @@
-import { NavBar } from "../components/NavBar"
-import {paragraphs} from'../components/Stepper'
+import { NavBar } from "@components/NavBar"
+import {paragraphs} from'@components/Stepper'
 
 export const Homevendedor = () => {
   return (
