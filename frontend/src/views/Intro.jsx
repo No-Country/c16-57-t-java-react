@@ -16,8 +16,8 @@ const Intro = () => {
       </section>
       <Stepper/>
       <div className='flex gap-x-4'>
-        <Boton texto="Comprar" to="/homecomprador" />
-        <Boton texto="Vender " to="/homevendedor" />
+        <Boton texto="Comprar" to="/comprador/home" />
+        <Boton texto="Vender " to="/vendedor/home" />
       </div>
   </div>
 )
