@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+
+  /* Clases utilizadas en NavBar (btm-nav) y usadas por NavLink (react-router-dom) */
+  .nav-active {
+    @apply bg-primary text-white border-none;
+  }
+  .nav-active:first-child {
+    @apply rounded-tl-xl;
+  }
+  .nav-active:last-child {
+    @apply rounded-tr-xl;
+  }
+}
