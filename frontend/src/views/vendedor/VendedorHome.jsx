@@ -1,6 +1,6 @@
 const VendedorHome = () => {
   return (
-    <div className="flex items-center justify-center w-full h-full">
+    <div className="flex flex-col gap-4 items-center justify-center w-full h-full">
       Home VENDEDOR
     </div>
   )

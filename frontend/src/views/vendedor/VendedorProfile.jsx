@@ -1,7 +1,9 @@
+import ModeSwitch from "@components/ModeSwitch";
+
 const VendedorProfile = () => {
   return (
-    <div className="flex items-center justify-center w-full h-full">
-      Profile VENDEDOR
+    <div className="flex flex-col items-center justify-center w-full h-full gap-4">
+      <ModeSwitch />
     </div>
   )
 }
