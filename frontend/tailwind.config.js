@@ -31,7 +31,10 @@ export default {
       }
     },
   },
-  plugins: [require(".pnpm/daisyui@4.7.2_postcss@8.4.35/node_modules/daisyui")],
+  plugins: [
+    require(".pnpm/daisyui@4.7.2_postcss@8.4.35/node_modules/daisyui"),
+    require("tailwindcss-animate"),
+  ],
 }
 
   

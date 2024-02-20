@@ -15,15 +15,15 @@ const CarouselIntro = ({
     return () => clearInterval(interval);
   }, [intervalMs, paragraphs]);
   
-  const handleNextStep = () => {
-    setCurrentStep((prevStep) => Math.min(prevStep + 1, paragraphs.length - 1));
-  };
+  // const handleNextStep = () => {
+  //   setCurrentStep((prevStep) => Math.min(prevStep + 1, paragraphs.length - 1));
+  // };
 
-  const handlePrevStep = () => {
-    setCurrentStep((prevStep) => Math.max(prevStep - 1, 0));
-  };
+  // const handlePrevStep = () => {
+  //   setCurrentStep((prevStep) => Math.max(prevStep - 1, 0));
+  // };
 
-  const isLastStep = currentStep === paragraphs.length - 1;
+  // const isLastStep = currentStep === paragraphs.length - 1;
 
   return (
     <>

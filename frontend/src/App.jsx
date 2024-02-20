@@ -22,7 +22,7 @@ function App() {
   return (
     <Layout className={forceMobileStyles}>
       <Routes>
-        <Route path="/" element={<SplashScreen />}/>
+        <Route path="/" element={<SplashScreen delay={3000} destination="/intro" />}/>
         <Route path="/intro" element={<Intro/>}/>
         
         <Route path="/comprador/home" element={<CompradorHome />}/>
