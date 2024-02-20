@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
-import NavBar2 from "@components/NavBar2";
+import NavBar from "@components/NavBar";
 
 import AppHeader from "@components/AppHeader";
 
@@ -29,7 +29,7 @@ const Layout = ({
       {/* Hide the footer on the intro and landing pages */}
       {isNavHidden ? null : (
         <footer>
-          <NavBar2 />
+          <NavBar />
         </footer>
       )}
     </div>
