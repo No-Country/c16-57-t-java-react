@@ -50,7 +50,7 @@ const CarouselIntro = ({
           <div id={currentStep} className="justify-center w-full carousel-item">
             <p 
               className={`
-                w-[90%] text-balance
+                w-[90%] 
                 text-md font-light leading-snug text-balance 
                 [&>span]:block [&>span]:font-medium [&>span]:text-accent/75
               `}
