@@ -5,11 +5,11 @@ import AppLogo from '@components/AppLogo';
 
 const introParagraphs = [
   'El mejor lugar donde se encuentran consumidores y productores de productos orgánicos',
-  'Conectate con el proveedor más cercano a vos, o el que vos quieras',
-  'Vendé tus productos a más personas',
-  'Seleccioná, pedí, pagá',
-  'Ofrecé, vendé, entregá',
-  'Sin vueltas...'
+  'Sin vueltas. Sin intermediarios',
+  '<span>¿Sos consumidor?</span> Conectate con el proveedor más cercano a vos, o el que vos quieras',
+  '<span>¿Sos productor?</span> Encontrá nuevos clientes para tus productos',
+  "<span>¿Sos consumidor?</span> Buscá, seleccioná, pedí, recibí tu pedido",
+  '<span>¿Sos productor?</span> Ofrecé, vendé, entregá',
 ];
 
 const Intro = () => {
