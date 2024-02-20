@@ -14,6 +14,9 @@ const CarouselIntro = ({
 
     return () => clearInterval(interval);
   }, [intervalMs, paragraphs]);
+
+  // TODO: agregar animaciones de entrada y salida
+  // TODO: volver a activar botones de avanzar y retroceder
   
   // const handleNextStep = () => {
   //   setCurrentStep((prevStep) => Math.min(prevStep + 1, paragraphs.length - 1));
@@ -28,6 +31,8 @@ const CarouselIntro = ({
   return (
     <>
       <div className= 'flex flex-row items-start justify-center w-full h-24 text-center carousel '>
+
+        {/* Botón ANTERIOR (desactivado temporalmente) */}
         {/* {currentStep !== 0 
           &&  
           <button 
@@ -43,12 +48,19 @@ const CarouselIntro = ({
           </button>} */}
           
           <div id={currentStep} className="justify-center w-full carousel-item">
-            <p className={'text-lg font-light leading-tight text-balance' }>
-              {paragraphs[currentStep]}
-            </p>
+            <p 
+              className={`
+                w-[90%] text-balance
+                text-md font-light leading-snug text-balance 
+                [&>span]:block [&>span]:font-medium [&>span]:text-accent/75
+              `}
+              dangerouslySetInnerHTML={{ __html: paragraphs[currentStep] }}
+            />
           </div> 
         
         <div>
+
+        {/* Botón Siguiente (desactivado temporalmente) */}
          {/*  {!isLastStep && <button 
           onClick={handleNextStep} 
           disabled={currentStep === paragraphs.length - 1}
