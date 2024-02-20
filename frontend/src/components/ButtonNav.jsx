@@ -14,7 +14,7 @@ const ButtonNav = ({
     className = '',
 }) => {
   const variantClasses = {
-    'contained': 'bg-accent text-primary-content',
+    'contained': 'bg-primary text-primary-content',
     'outlined': 'border-2 border-primary',
     'transparent': 'bg-transparent',
   }; 

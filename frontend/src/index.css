@@ -6,7 +6,7 @@
 
   /* Clases utilizadas en NavBar (btm-nav) y usadas por NavLink (react-router-dom) */
   .nav-active {
-    @apply bg-accent/75 text-white border-none;
+    @apply bg-primary text-white border-none;
   }
   .nav-active:first-child {
     @apply rounded-tl-xl;

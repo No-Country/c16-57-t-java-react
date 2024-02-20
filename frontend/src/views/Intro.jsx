@@ -16,6 +16,7 @@ const Intro = () => {
   return (
     <div className='flex flex-col items-center gap-0 mx-6 h-dvh bg-background'>
       <section>
+        {/* TODO: Usar imagen sin color de fondo */}
         <img
           src={imagenIntro}
           alt="Frutas y verduras organicas, verduMarket"
@@ -31,6 +32,7 @@ const Intro = () => {
         <CarouselIntro paragraphs={introParagraphs} intervalMs={2500}/>
       </section>
 
+      {/* TODO: Botones deberían ser para Iniciar sesión y registrarse */}
       <footer className="flex flex-col w-full gap-2 mb-14">
           <ButtonNav text="Comprar" to="/comprador/home" />
           <ButtonNav text="Vender " to="/vendedor/home" variant="outlined"/>
