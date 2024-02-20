@@ -16,7 +16,7 @@ export default {
           "neutral-content": "#095012",
           "neutral-100": "#D5DFD7",
           "accent": "#095012",
-          "background": "#F6F6F6",
+          "background": "#EDF3ED",
         },
       },
     ],

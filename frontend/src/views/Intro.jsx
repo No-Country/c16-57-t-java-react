@@ -14,7 +14,7 @@ const introParagraphs = [
 
 const Intro = () => {
   return (
-    <div className='flex flex-col gap-0 items-center h-dvh bg-[#EDF3ED] mx-6'>
+    <div className='flex flex-col items-center gap-0 mx-6 h-dvh bg-background'>
       <section>
         <img
           src={imagenIntro}
