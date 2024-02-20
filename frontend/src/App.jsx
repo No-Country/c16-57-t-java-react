@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 
 import Layout from "@views/Layouts/Layout"
-import Landing from "@views/Landing"
+import SplashScreen from "@views/SplashScreen"
 import Intro from "@views/Intro"
 
 import CompradorHome from "@views/comprador/CompradorHome"
@@ -22,7 +22,7 @@ function App() {
   return (
     <Layout className={forceMobileStyles}>
       <Routes>
-        <Route path="/" element={<Landing/>}/>
+        <Route path="/" element={<SplashScreen />}/>
         <Route path="/intro" element={<Intro/>}/>
         
         <Route path="/comprador/home" element={<CompradorHome />}/>
