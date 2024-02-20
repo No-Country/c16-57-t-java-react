@@ -22,7 +22,7 @@ const Layout = ({
         <AppHeader />
       )}
 
-      <main className="flex-grow">
+      <main className="items-center flex-grow m-6">
         {children}
       </main>
 
