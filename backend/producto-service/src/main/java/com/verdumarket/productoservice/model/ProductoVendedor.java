@@ -1,19 +1,19 @@
 package com.verdumarket.productoservice.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+@Entity
+@Table(name = "ProductoVendedor")
 public class ProductoVendedor {
 
     @Id
@@ -22,12 +22,14 @@ public class ProductoVendedor {
 
     private Long idVendedor;
 
-    private Long idProducto;
+    @ManyToOne
+    @JoinColumn(name = "idProducto", referencedColumnName = "idProductoGenerico")
+    private ProductoGenerico productoGenerico;
 
-    private int stock;
+    private Integer stock;
 
     private BigDecimal precioUnidad;
 
-    private int estado;
+    private Integer estado;
 
 }

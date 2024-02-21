@@ -1,30 +1,29 @@
 package com.verdumarket.productoservice.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @NoArgsConstructor
-@AllArgsConstructor
 
+@Entity
+@Table(name = "ProductoGenerico")
 public class ProductoGenerico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProductoGenerico;
 
-    private Long idCategoria;
+    @ManyToOne
+    @JoinColumn(name = "categoria", referencedColumnName = "idCategoria")
+    private Categoria categoria;
 
     private String tipoUnidad;
 
     private String nombreProducto;
 
-    private String Descripcion;
+    private String descripcion;
 
 }
