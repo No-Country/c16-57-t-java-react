@@ -7,4 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/usuario")
 public class UsuarioController {
 
+    @Autowired
+    private UsuarioService usuarioService;
+    @GetMapping("/crear")
+    public void crearUser() throws Personalizado {
+
+    }
+
+
+
+
 }

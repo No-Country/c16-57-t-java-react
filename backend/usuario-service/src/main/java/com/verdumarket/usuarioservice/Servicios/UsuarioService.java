@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.common.base.Optional;
+import com.verdumarket.usuarioservice.DTO.UsuarioDTO;
 import com.verdumarket.usuarioservice.Entidades.UsuarioEntity;
 import com.verdumarket.usuarioservice.Excepciones.Personalizado;
 import com.verdumarket.usuarioservice.Interfaces.UsuarioServiceInterface;
 import com.verdumarket.usuarioservice.Repositorios.UsuarioRepository;
-
 
 import jakarta.transaction.Transactional;
 
@@ -26,8 +26,7 @@ public class UsuarioService implements UsuarioServiceInterface {
 
     /**
      * Este método se debe usar para validar que los datos de un usuario llegaron
-     * correctamente, de lo contrario
-     * se lanzará una excepción.
+     * correctamente, si un dato es invalido se lanzará una excepción.
      * 
      * @param contrasenia
      * @param email
@@ -56,21 +55,21 @@ public class UsuarioService implements UsuarioServiceInterface {
     }
 
     /**
-     * Este método se debe usar para validar que el email de un usuario llego
+     * Este método se debe usar para validar que el id de un usuario llego
      * correctamente, de lo contrario se lanzará una excepción.
      * 
-     * @param email
+     * @param id
      * @throws Personalizado
      */
-    public void validarEmail(String email) throws Personalizado {
-        if (email == null || email.isEmpty() || email.trim().isEmpty() || !email.contains("@")) {
-            throw new Personalizado("Error, el email no puede ser nulo o es invalido.");
+    public void validarId(Long id) throws Personalizado {
+        if (id == null) {
+            throw new Personalizado("Error, el id no puede ser nulo o es invalido.");
         }
     }
 
     /**
      * Método para crear usuarios con una verificación de datos para evitar
-     * persistencias invalidas.
+     * persistencias invalidas, si algun dato es invalido, se lanzará una excepción.
      * 
      * @param contrasenia
      * @param email
@@ -99,8 +98,9 @@ public class UsuarioService implements UsuarioServiceInterface {
 
     /**
      * Este método se debe usar para actualizar los datos de un usuario
-     * existente, de lo contrario se lanzará una excepción.
+     * existente, si no se encuentra el usuario se lanzará una excepción.
      * 
+     * @param id
      * @param contrasenia
      * @param email
      * @param nombre
@@ -110,11 +110,13 @@ public class UsuarioService implements UsuarioServiceInterface {
      */
     @Transactional
     @Override
-    public void actualizarUsuario(String contrasenia, String email, String nombre, String direccion, String celular)
+    public void actualizarUsuario(Long id, String contrasenia, String email, String nombre, String direccion,
+            String celular)
             throws Personalizado {
         try {
+            validarId(id);
             validarDatos(contrasenia, email, nombre, direccion, celular);
-            Optional<UsuarioEntity> var = usuarioRepository.findByEmail(email);
+            Optional<UsuarioEntity> var = usuarioRepository.buscarPorId(id);
             if (var.isPresent()) {
                 UsuarioEntity usuario = var.get();
                 usuario.setContrasenia(contrasenia);
@@ -134,17 +136,19 @@ public class UsuarioService implements UsuarioServiceInterface {
     }
 
     /**
-     * Este método se debe usar para borrar un usuario existente, de lo contrario
+     * Este método se debe usar para borrar un usuario existente que se busca por
+     * id, si no se encuentra
      * se lanzará una excepción.
      * 
-     * @param email
+     * @param id
+     * @throws Personalizado
      */
     @Transactional
     @Override
-    public void borrarUsuario(String email) throws Personalizado {
+    public void borrarUsuario(Long id) throws Personalizado {
         try {
-            validarEmail(email);
-            Optional<UsuarioEntity> var = usuarioRepository.findByEmail(email);
+            validarId(id);
+            Optional<UsuarioEntity> var = usuarioRepository.buscarPorId(id);
             if (var.isPresent()) {
                 usuarioRepository.delete(var.get());
             } else {
@@ -157,24 +161,54 @@ public class UsuarioService implements UsuarioServiceInterface {
     }
 
     /**
-     * Este método se debe usar para buscar un usuario existente, de lo contrario
+     * Este método se debe usar para buscar un usuario existente por id, si no se
+     * encuentra
      * se lanzará una excepción.
      * 
-     * @param email
-     * @return UsuarioEntity
+     * @param id
+     * @return UsuarioDTO
      * @throws Personalizado
      */
     @Override
-    public UsuarioEntity buscarUsuario(String email) throws Personalizado {
+    public UsuarioDTO buscarUsuarioPorId(Long id) throws Personalizado {
         try {
-            validarEmail(email);
-            Optional<UsuarioEntity> var = usuarioRepository.findByEmail(email);
+            Optional<UsuarioEntity> var = usuarioRepository.buscarPorId(id);
             if (var.isPresent()) {
-                UsuarioEntity usuario = new UsuarioEntity();
-                usuario = var.get();
-                return usuario;
+                UsuarioEntity usuario = var.get();
+                return new UsuarioDTO(usuario.getNombre(), usuario.getEmail(), usuario.getDireccion(),
+                        usuario.getCelular());
             } else {
-                throw new Personalizado("Error, no se encontró el usuario con este email.");
+                throw new Personalizado("Error, no se encontró el usuario con el siguiente id: " + id);
+            }
+        } catch (Personalizado e) {
+            System.out.println(e.getMessage());
+            throw new Personalizado("Error, vuelva a intentar porfavor.");
+        }
+    }
+
+    /**
+     * Este método se debe usar para buscar un usuario existente por email, si no se
+     * encuentra
+     * se lanzará una excepción.
+     * 
+     * @param email
+     * @return UsuarioDTO
+     * @throws Personalizado
+     */
+    @Override
+    public UsuarioDTO buscarUsuarioPorEmail(String email) throws Personalizado {
+        try {
+            if (email == null || email.isEmpty() || email.trim().isEmpty() || !email.contains("@")) {
+                throw new Personalizado("Error, el email no puede ser nulo o es invalido.");
+            } else {
+                Optional<UsuarioEntity> var = usuarioRepository.findByEmail(email);
+                if (var.isPresent()) {
+                    UsuarioEntity usuario = var.get();
+                    return new UsuarioDTO(usuario.getNombre(), usuario.getEmail(), usuario.getDireccion(),
+                            usuario.getCelular());
+                } else {
+                    throw new Personalizado("Error, no se encontró el usuario con este email.");
+                }
             }
         } catch (Personalizado e) {
             System.out.println(e.getMessage());
@@ -185,23 +219,37 @@ public class UsuarioService implements UsuarioServiceInterface {
 
     /**
      * Este método se debe usar para buscar todos los usuarios existentes, si no hay
-     * usuarios, se
-     * arrojará una excepción.
+     * usuarios, se lanzará una excepción.
      * 
      * @return ArrayList
+     * @throws Personalizado
      */
     @Override
-    public ArrayList<UsuarioEntity> buscarTodosLosUsuarios() throws Personalizado {
+    public ArrayList<UsuarioDTO> buscarTodosLosUsuarios() throws Personalizado {
         try {
             List<UsuarioEntity> usuarios = usuarioRepository.findAll();
             if (usuarios.isEmpty()) {
                 throw new Personalizado("Error, no se encontró ningun usuario.");
             }
-            return new ArrayList<>(usuarios);
+
+            ArrayList<UsuarioDTO> usuariosDTO = new ArrayList<>();
+
+            for (UsuarioEntity usuarioEntity : usuarios) {
+                UsuarioDTO usuarioDTO = new UsuarioDTO(
+                        usuarioEntity.getNombre(),
+                        usuarioEntity.getEmail(),
+                        usuarioEntity.getDireccion(),
+                        usuarioEntity.getCelular());
+                usuariosDTO.add(usuarioDTO);
+            }
+
+            return usuariosDTO;
+
         } catch (Personalizado e) {
             System.out.println(e.getMessage());
             throw new Personalizado("Error, vuelva a intentarlo.");
         }
 
     }
+
 }
