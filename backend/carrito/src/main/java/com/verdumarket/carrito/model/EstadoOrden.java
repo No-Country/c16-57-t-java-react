@@ -4,5 +4,6 @@ public enum EstadoOrden {
     ACTIVO,
     INACTIVO,
     PENDIENTE,
-    CONCRETADO
+    CONCRETADO,
+    CANCELADO
 }

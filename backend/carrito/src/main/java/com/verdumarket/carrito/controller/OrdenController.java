@@ -1,6 +1,7 @@
 package com.verdumarket.carrito.controller;
 
 import com.verdumarket.carrito.apis.UsuarioAPICliente;
+import com.verdumarket.carrito.dto.DatosOrdenDTO;
 import com.verdumarket.carrito.model.Carrito;
 import com.verdumarket.carrito.model.Orden;
 import com.verdumarket.carrito.service.IOrdenService;
@@ -29,8 +30,14 @@ public class OrdenController {
     }
 
     @GetMapping("/crearOrdenPorIdCarrito/{idCarrito}")
-    public ResponseEntity<String> crearOrden(@PathVariable Long idCarrito){
-        ordenService.crearOrden(idCarrito);
-        return ResponseEntity.ok("Orden Creada con Éxito");
+    public ResponseEntity<Orden> crearOrden(@PathVariable Long idCarrito){
+        Orden orden = ordenService.crearOrden(idCarrito);
+        return ResponseEntity.ok(orden);
+    }
+
+    @PostMapping("/confirmacionOrden")
+    public ResponseEntity<Orden> confirmacionOrden(@RequestBody DatosOrdenDTO datosOrden){
+        Orden orden = ordenService.confirmacionOrden(datosOrden);
+        return ResponseEntity.ok(orden);
     }
 }

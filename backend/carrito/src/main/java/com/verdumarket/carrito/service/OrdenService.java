@@ -1,6 +1,7 @@
 package com.verdumarket.carrito.service;
 
 import com.verdumarket.carrito.apis.UsuarioAPICliente;
+import com.verdumarket.carrito.dto.DatosOrdenDTO;
 import com.verdumarket.carrito.dto.UsuarioDTO;
 import com.verdumarket.carrito.model.Carrito;
 import com.verdumarket.carrito.model.EstadoOrden;
@@ -26,22 +27,22 @@ public class OrdenService implements IOrdenService{
 
     public List<Orden> listarOrdenesPorConsumidor(Long idConsumidor){
        // return ordenRepository.listarOrdenesPorConsumidor(idConsumidor);
-       return ordenRepository.findAllByIdComprador(idConsumidor);
+       return ordenRepository.findAllByIdCompradorAndEstadoOrdenNot(idConsumidor,EstadoOrden.INACTIVO);
     }
 
     public List<Orden> listarOrdenesPorVendedor(Long idVendedor){
         //return ordenRepository.listarOrdenesPorVendedor(idVendedor);
-        return ordenRepository.findAllByIdVendedor(idVendedor);
+        return ordenRepository.findAllByIdVendedorAndEstadoOrdenNot(idVendedor,EstadoOrden.INACTIVO);
     }
 
-    public void crearOrden(Long idCarrito){
+    public Orden crearOrden(Long idCarrito){
         Carrito carrito = carritoRepository.findById(idCarrito).orElse(null);
         UsuarioDTO comprador = usuarioAPICliente.getUsuario(carrito.getIdComprador());
         UsuarioDTO vendedor = usuarioAPICliente.getUsuario(carrito.getIdVendedor());
 
 
         Orden orden = Orden.builder().
-                estadoOrden(EstadoOrden.PENDIENTE).
+                estadoOrden(EstadoOrden.INACTIVO).
                 direccion(comprador.getDireccion()). //puede ser null
                 celularComprador(comprador.getCelular()). //puede ser null
                 celularVendedor(vendedor.getCelular()). //puede ser null
@@ -54,5 +55,27 @@ public class OrdenService implements IOrdenService{
                 build();
 
         ordenRepository.save(orden);
+        return orden;
+    }
+
+    @Override
+    public Orden confirmacionOrden(DatosOrdenDTO datosOrden) {
+        Orden orden = ordenRepository.findById(datosOrden.getIdOrden()).orElse(null);
+
+        if(datosOrden.getCelularComprador()!=null)
+            orden.setCelularComprador(datosOrden.getCelularComprador());
+        if(datosOrden.getCelularVendedor()!=null)
+            orden.setCelularVendedor(datosOrden.getCelularVendedor());
+        if(datosOrden.getDireccion()!=null)
+            orden.setDireccion(datosOrden.getDireccion());
+        if(datosOrden.getNombre()!=null)
+            orden.setNombre(datosOrden.getNombre());
+
+
+        //ConfirmaciónOrden
+        orden.setEstadoOrden(EstadoOrden.PENDIENTE);
+
+        ordenRepository.saveAndFlush(orden);
+        return  orden;
     }
 }

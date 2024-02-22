@@ -1,5 +1,6 @@
 package com.verdumarket.carrito.service;
 
+import com.verdumarket.carrito.dto.DatosOrdenDTO;
 import com.verdumarket.carrito.model.Carrito;
 import com.verdumarket.carrito.model.Orden;
 
@@ -9,5 +10,7 @@ public interface IOrdenService {
     public List<Orden> listarOrdenesPorVendedor(Long idVendedor);
     public List<Orden> listarOrdenesPorConsumidor(Long idConsumidor);
 
-    public void crearOrden(Long idCarrito);
+    public Orden crearOrden(Long idCarrito);
+
+    Orden confirmacionOrden(DatosOrdenDTO datosOrden);
 }
