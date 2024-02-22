@@ -1,4 +1,4 @@
-package com.verdumarket.usuarioservice;
+package com.verdumarket.usuarioservice.Entidades;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
