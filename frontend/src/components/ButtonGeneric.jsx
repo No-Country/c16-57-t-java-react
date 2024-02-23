@@ -23,9 +23,9 @@ const ButtonGeneric = ({
   }; 
 
   const sizeClasses = {
-    'small': 'h-8 p-1 text-sm',
-    'medium': 'size-25 p-2 text-base',
-    'large': 'h-[156px] p-4 text-xl',
+    // 'small': 'h-8 p-1 text-sm',
+    // 'medium': 'size-25 p-2 text-base',
+    'large': 'h-[156px] text-xl',
     'landscape': 'h-[64px] text-xl items-center  w-full flex flex-row '
   };
 
@@ -36,7 +36,7 @@ const ButtonGeneric = ({
       <Link to={to} className="">
         <button className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}>
          {img && <img src={img} alt={`Imagen de productos ${img} de Verdumarket`} className={imgClassName}/>
- }         <p className="justify-center">{text}</p>
+ }         <p >{text}</p>
         </button>
       </Link>
     </div>
