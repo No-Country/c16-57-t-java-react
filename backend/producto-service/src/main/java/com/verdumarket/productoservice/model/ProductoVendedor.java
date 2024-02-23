@@ -30,6 +30,7 @@ public class ProductoVendedor {
 
     private BigDecimal precioUnidad;
 
-    private Integer estado;
+    @Enumerated(EnumType.ORDINAL)
+    private EstadoProducto estadoProducto;
 
 }

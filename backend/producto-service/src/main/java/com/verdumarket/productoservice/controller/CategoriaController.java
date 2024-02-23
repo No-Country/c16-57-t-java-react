@@ -19,13 +19,13 @@ public class CategoriaController {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    @GetMapping("/listar")
+    @GetMapping("/listarCategoria")
     public List<Categoria> categoriaGetAll()
     {
         return categoriaRepository.findAll();
     }
 
-    @GetMapping("/listar/{id}")
+    @GetMapping("/listarCategoriaId/{id}")
     public ResponseEntity<Categoria> getCategoriaId(@PathVariable(value="id") Long idCategoria)
         throws ResourceNotFoundException {
 
@@ -34,7 +34,7 @@ public class CategoriaController {
         return ResponseEntity.ok(categoria);
     }
 
-    @GetMapping(value = "/listarNombre/{nombre}", produces = "application/json")
+    @GetMapping(value = "/listarCategoriaNombre/{nombre}", produces = "application/json")
     public ResponseEntity<Categoria> getCategoriaNombre(@PathVariable(value = "nombre") String nombre)
         throws ResourceNotFoundException {
 

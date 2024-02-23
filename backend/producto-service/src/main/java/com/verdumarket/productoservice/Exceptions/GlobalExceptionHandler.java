@@ -12,13 +12,15 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ConfigDataException.class)
+    @ExceptionHandler(ConfigDataResourceNotFoundException.class)
 
     public ResponseEntity<?> resourceNotFoundException(ConfigDataResourceNotFoundException ex, WebRequest request){
+
         ErrorDetails errorDetails = new ErrorDetails();
 
         System.err.println(errorDetails + "ERROR");
 
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+
     }
 }
