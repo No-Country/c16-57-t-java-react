@@ -21,7 +21,7 @@ const CompradorHome = ({user= "usuario"}) => {
     <ButtonGeneric text="Aromaticas" size="large"  img={cilantro}/>   
     <ButtonGeneric text="Frutos Secos"size="large"  img={nueces}/>   
    </section>
-    <ButtonGeneric text="Productores" size="landscape"  img={productores}/>   
+    <ButtonGeneric text="Productores" size="landscape" className="text-xl" img={productores} imgClassName=""/>   
  </div>
   )
 }
