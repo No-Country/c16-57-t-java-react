@@ -16,7 +16,7 @@ const CompradorHome = ({user= "usuario"}) => {
     </section>
    <SearchBar className="items-start"/>
    <section className='grid grid-cols-2 gap-4'>
-    <ButtonGeneric text="Frutas"   img={naranjas} to="/frutas"  />     
+    <ButtonGeneric text="Frutas"   img={naranjas} to="/comprador/frutas"  />     
     <ButtonGeneric text="Verduras"   img={zucchini}/>   
     <ButtonGeneric text="Aromaticas"   img={cilantro}/>   
     <ButtonGeneric text="Frutos Secos"  img={nueces}/>   
