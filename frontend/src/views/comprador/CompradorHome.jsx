@@ -6,8 +6,8 @@ import nueces from '../../assets/frutos_secos/nueces.png'
 import cilantro from '../../assets/aromaticas/cilantro.png'
 import productores from '../../assets/productores.png'
 const CompradorHome = ({user= "usuario"}) => {
-  return ( 
 
+  return ( 
 
 <div className="flex flex-col gap-4 items-center justify-center w-full h-full">
     <section className='text-accent'>
@@ -16,10 +16,10 @@ const CompradorHome = ({user= "usuario"}) => {
     </section>
    <SearchBar className="items-start"/>
    <section className='grid grid-cols-2 gap-4'>
-    <ButtonGeneric text="Frutas" size="large"  img={naranjas} to="/frutas"/>     
-    <ButtonGeneric text="Verduras" size="large"  img={zucchini}/>   
-    <ButtonGeneric text="Aromaticas" size="large"  img={cilantro}/>   
-    <ButtonGeneric text="Frutos Secos"size="large"  img={nueces}/>   
+    <ButtonGeneric text="Frutas"   img={naranjas} to="/frutas"  />     
+    <ButtonGeneric text="Verduras"   img={zucchini}/>   
+    <ButtonGeneric text="Aromaticas"   img={cilantro}/>   
+    <ButtonGeneric text="Frutos Secos"  img={nueces}/>   
    </section>
     <ButtonGeneric text="Productores" size="landscape" className="gap-x-14" img={productores} imgClassName="size-13"/>   
  </div>

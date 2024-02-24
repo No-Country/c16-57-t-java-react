@@ -5,7 +5,7 @@ const ButtonGeneric = ({
     text,
     to,
     variant = 'contained',
-    size = 'medium',
+    size = 'large',
     className = '',
     img,
     imgClassName ='w-[130px] h-[117.44px] bg-cover bg-no-repeat relative mx-auto my-0',
