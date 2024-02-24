@@ -13,6 +13,7 @@ import VendedorHome from "@views/vendedor/VendedorHome"
 import VendedorSearch from "@views/vendedor/VendedorSearch"
 import VendedorHistory from "@views/vendedor/VendedorHistory"
 import VendedorProfile from "@views/vendedor/VendedorProfile"
+import CompradorFrutas from "@views/comprador/CompradorFrutas"
 
 function App() {
   // Forzar viewport mobile en Layout, temporalmente mientras se desarrolla solo mobile
@@ -26,6 +27,8 @@ function App() {
         <Route path="/intro" element={<Intro/>}/>
         
         <Route path="/comprador/home" element={<CompradorHome />}/>
+        <Route path="/comprador/frutas" element={<CompradorFrutas />}/>
+
         <Route path="/comprador/search" element={<CompradorSearch />}/>
         <Route path="/comprador/history" element={<CompradorHistory />}/>
         <Route path="/comprador/profile" element={<CompradorProfile />}/>

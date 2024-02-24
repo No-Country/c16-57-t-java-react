@@ -2,19 +2,13 @@ import { Link } from "react-router-dom"
 import { twMerge } from "tailwind-merge";
 
 const ButtonGeneric = ({
-    /* texto a mostrar */
     text,
-    /* ruta */
     to,
-    /* variant = 'contained'| 'outlined' | 'transparent' */
     variant = 'contained',
-    /* size = 'small' | 'medium' | 'large' */
     size = 'medium',
-    /* para estilos adicionales pasados como props */
     className = '',
+    img,
     imgClassName ='w-[130px] h-[117.44px] bg-cover bg-no-repeat relative mx-auto my-0',
-
-    img
 }) => {
   const variantClasses = {
     'contained': 'bg-white text-accent hover:bg-primary hover:text-white transition-colors duration-300 ease-in-out',
@@ -33,9 +27,9 @@ const ButtonGeneric = ({
 
   return (
     <div className="flex flex-col w-full font-custom drop-shadow-2xl" >
-      <Link to={to} className="">
+      <Link to={to} delay={2500}>
         <button className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}>
-         {img && <img src={img} alt={`Imagen de productos ${img} de Verdumarket`} className={imgClassName}/>
+         {img && <img src={img} alt={`Imagen de ${img} de Verdumarket`} className={imgClassName}/>
  }         <p >{text}</p>
         </button>
       </Link>
