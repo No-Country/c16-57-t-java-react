@@ -1,6 +1,7 @@
 import ButtonGeneric from '@components/ButtonGeneric'
 import naranjas from '../../assets/frutas/naranjas.png'
 import peras from '../../assets/frutas/peras.png'
+import SearchForm from '../../components/SearchForm';
 
 //! Este componente es un placeholder para la vista de frutas del comprador. debe consumir la data de frutas del backend, se realizará un JSON que simule la data de frutas para el desarrollo de la vista.
 
@@ -133,10 +134,9 @@ const CompradorFrutas = () => {
     <>
     <section className="h-2/8 text-center">
         <h1>Frutas</h1>
+        <SearchForm/>
     </section>
     <section className="flex flex-col h-6/8 gap-2 ">
-<h1>verdumarket</h1>
-
 {frutas.map((fruta,index)=>{
   return(
     <div className='flex flex-row'>
