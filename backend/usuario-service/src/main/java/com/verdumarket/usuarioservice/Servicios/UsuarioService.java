@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.google.common.base.Optional;
 import com.verdumarket.usuarioservice.DTO.UsuarioDTO;
 import com.verdumarket.usuarioservice.Entidades.UsuarioEntity;
+import com.verdumarket.usuarioservice.Enums.Estado;
 import com.verdumarket.usuarioservice.Excepciones.Personalizado;
 import com.verdumarket.usuarioservice.Interfaces.UsuarioServiceInterface;
 import com.verdumarket.usuarioservice.Repositorios.UsuarioRepository;
@@ -19,37 +20,31 @@ import jakarta.transaction.Transactional;
 public class UsuarioService implements UsuarioServiceInterface {
 
     @Autowired
-    private UsuarioEntity usuarioEntity;
-
-    @Autowired
     private UsuarioRepository usuarioRepository;
 
     /**
      * Este método se debe usar para validar que los datos de un usuario llegaron
      * correctamente, si un dato es invalido se lanzará una excepción.
      * 
-     * @param contrasenia
-     * @param email
-     * @param nombre
-     * @param direccion
-     * @param celular
+     * @param usuario
      * @throws Personalizado
      */
-    public void validarDatos(String contrasenia, String email, String nombre, String direccion, String celular)
+    public void validarDatos(UsuarioEntity usuario)
             throws Personalizado {
-        if (contrasenia == null || contrasenia.isEmpty() || contrasenia.trim().isEmpty()) {
+        if (usuario.getContrasenia().isEmpty() || usuario.getContrasenia().trim().isEmpty()) {
             throw new Personalizado("Error, la contraseña no puede ser nula o es invalida.");
         }
-        if (email == null || email.isEmpty() || email.trim().isEmpty() || !email.contains("@")) {
+        if (usuario.getEmail().isEmpty() || usuario.getEmail().trim().isEmpty()
+                || !usuario.getEmail().contains("@")) {
             throw new Personalizado("Error, el email no puede ser nulo o es invalido.");
         }
-        if (nombre == null || nombre.isEmpty() || nombre.trim().isEmpty()) {
+        if (usuario.getNombre().isEmpty() || usuario.getNombre().trim().isEmpty()) {
             throw new Personalizado("Error, el nombre no puede ser nulo o es invalido.");
         }
-        if (direccion == null || direccion.isEmpty() || direccion.trim().isEmpty()) {
+        if (usuario.getDireccion().isEmpty() || usuario.getDireccion().trim().isEmpty()) {
             throw new Personalizado("Error, la direccion no puede ser nula o es invalida.");
         }
-        if (celular == null || celular.isEmpty() || celular.trim().isEmpty()) {
+        if (usuario.getCelular().isEmpty() || usuario.getCelular().trim().isEmpty()) {
             throw new Personalizado("Error, el celular no puede ser nulo o es invalido.");
         }
     }
@@ -68,28 +63,36 @@ public class UsuarioService implements UsuarioServiceInterface {
     }
 
     /**
+     * Este método se debe utilizar para validar el estado de un usuario
+     * 
+     * @param usuario
+     * @throws Personalizado
+     */
+    public void validarEstado(UsuarioEntity usuario) throws Personalizado {
+        if (usuario.getEstado() == Estado.INACTIVO) {
+            throw new Personalizado("Error, este usuario está dado de baja.");
+        }
+    }
+
+    /**
      * Método para crear usuarios con una verificación de datos para evitar
      * persistencias invalidas, si algun dato es invalido, se lanzará una excepción.
      * 
-     * @param contrasenia
-     * @param email
-     * @param nombre
-     * @param direccion
-     * @param celular
+     * @param usuario
+     * @return UsuarioDTO
      * @throws Personalizado
      */
     @Transactional
     @Override
-    public void crearUsuario(String contrasenia, String email, String nombre, String direccion, String celular)
+    public UsuarioDTO crearUsuario(UsuarioEntity usuario)
             throws Personalizado {
         try {
-            validarDatos(contrasenia, email, nombre, direccion, celular);
-            usuarioEntity.setContrasenia(contrasenia);
-            usuarioEntity.setEmail(email);
-            usuarioEntity.setNombre(nombre);
-            usuarioEntity.setDireccion(direccion);
-            usuarioEntity.setCelular(celular);
-            usuarioRepository.save(usuarioEntity);
+            validarDatos(usuario);
+            UsuarioEntity usuarioDB = new UsuarioEntity(usuario.getNombre(), usuario.getEmail(),
+                    usuario.getContrasenia(), usuario.getDireccion(), usuario.getCelular(), false, Estado.ACTIVO);
+            usuarioRepository.save(usuarioDB);
+            return new UsuarioDTO(usuario.getNombre(), usuario.getEmail(), usuario.getDireccion(),
+                    usuario.getCelular());
         } catch (Personalizado e) {
             System.out.println(e.getMessage());
             throw new Personalizado("Hubo un problema al crear el usuario, porfavor, vuelva a intentarlo.");
@@ -101,30 +104,30 @@ public class UsuarioService implements UsuarioServiceInterface {
      * existente, si no se encuentra el usuario se lanzará una excepción.
      * 
      * @param id
-     * @param contrasenia
-     * @param email
-     * @param nombre
-     * @param direccion
-     * @param celular
+     * @param usuario
+     * @return UsuarioDTO
      * @throws Personalizado
      */
     @Transactional
     @Override
-    public void actualizarUsuario(Long id, String contrasenia, String email, String nombre, String direccion,
-            String celular)
+    public UsuarioDTO actualizarUsuario(Long id, UsuarioEntity usuario)
             throws Personalizado {
-        try {
+        try {            
             validarId(id);
-            validarDatos(contrasenia, email, nombre, direccion, celular);
+            validarDatos(usuario);
             Optional<UsuarioEntity> var = usuarioRepository.buscarPorId(id);
+            validarEstado(var.get());
+            System.out.println("pasó por el service.");
             if (var.isPresent()) {
-                UsuarioEntity usuario = var.get();
-                usuario.setContrasenia(contrasenia);
-                usuario.setEmail(email);
-                usuario.setNombre(nombre);
-                usuario.setDireccion(direccion);
-                usuario.setCelular(celular);
-                usuarioRepository.save(usuario);
+                UsuarioEntity usuarioDB = var.get();
+                usuarioDB.setContrasenia(usuario.getContrasenia());
+                usuarioDB.setEmail(usuario.getEmail());
+                usuarioDB.setNombre(usuario.getNombre());
+                usuarioDB.setDireccion(usuario.getDireccion());
+                usuarioDB.setCelular(usuario.getCelular());
+                usuarioRepository.save(usuarioDB);
+                return new UsuarioDTO(usuario.getNombre(), usuario.getEmail(), usuario.getDireccion(),
+                        usuario.getCelular());
             } else {
                 throw new Personalizado("No se encontró el usuario con el correo electrónico especificado.");
             }
@@ -136,23 +139,28 @@ public class UsuarioService implements UsuarioServiceInterface {
     }
 
     /**
-     * Este método se debe usar para borrar un usuario existente que se busca por
-     * id, si no se encuentra
-     * se lanzará una excepción.
+     * Este método se debe usar para desactivar un usuario, se busca por
+     * id, si no se encuentra o ya está inactivo, se lanzará una excepción.
      * 
      * @param id
+     * @return UsuarioDTO
      * @throws Personalizado
      */
     @Transactional
     @Override
-    public void borrarUsuario(Long id) throws Personalizado {
+    public UsuarioDTO desactivarUsuario(Long id) throws Personalizado {
         try {
             validarId(id);
             Optional<UsuarioEntity> var = usuarioRepository.buscarPorId(id);
             if (var.isPresent()) {
-                usuarioRepository.delete(var.get());
+                UsuarioEntity usuario = var.get();
+                validarEstado(usuario);
+                usuario.setEstado(Estado.INACTIVO);
+                usuarioRepository.save(usuario);
+                return new UsuarioDTO(usuario.getNombre(), usuario.getEmail(), usuario.getDireccion(),
+                        usuario.getCelular());
             } else {
-                throw new Personalizado("Error, no se encontró un usuario con este email.");
+                throw new Personalizado("Error, no se encontró un usuario con este id: " + id);
             }
         } catch (Personalizado e) {
             System.out.println(e.getMessage());
@@ -161,7 +169,40 @@ public class UsuarioService implements UsuarioServiceInterface {
     }
 
     /**
-     * Este método se debe usar para buscar un usuario existente por id, si no se
+     * Este método se debe utilizar para reactivar un usuario, se busca por id, en
+     * caso de no ser encontrado
+     * o de que el usuario ya esté activo, se lanzará una excepción.
+     * 
+     * @param id
+     * @return UsuarioDTO
+     * @throws Personalizado
+     */
+    @Transactional
+    @Override
+    public UsuarioDTO reactivarUsuario(Long id) throws Personalizado {
+        try {
+            validarId(id);
+            Optional<UsuarioEntity> var = usuarioRepository.buscarPorId(id);
+            if (var.isPresent()) {
+                UsuarioEntity usuario = var.get();
+                if (usuario.getEstado() == Estado.ACTIVO) {
+                    throw new Personalizado("Este usuario ya está activo.");
+                }
+                usuario.setEstado(Estado.ACTIVO);
+                usuarioRepository.save(usuario);
+                return new UsuarioDTO(usuario.getNombre(), usuario.getEmail(), usuario.getDireccion(),
+                        usuario.getCelular());
+            } else {
+                throw new Personalizado("Error, no se encontró un usuario con este id: " + id);
+            }
+        } catch (Personalizado e) {
+            System.out.println(e.getMessage());
+            throw new Personalizado("Error al reactivar el usuario, vuelva a intentar.");
+        }
+    }
+
+    /**
+     * Este método se debe usar para buscar un usuario por id, si no se
      * encuentra
      * se lanzará una excepción.
      * 
@@ -175,6 +216,7 @@ public class UsuarioService implements UsuarioServiceInterface {
             Optional<UsuarioEntity> var = usuarioRepository.buscarPorId(id);
             if (var.isPresent()) {
                 UsuarioEntity usuario = var.get();
+                validarEstado(usuario);
                 return new UsuarioDTO(usuario.getNombre(), usuario.getEmail(), usuario.getDireccion(),
                         usuario.getCelular());
             } else {
@@ -187,9 +229,8 @@ public class UsuarioService implements UsuarioServiceInterface {
     }
 
     /**
-     * Este método se debe usar para buscar un usuario existente por email, si no se
-     * encuentra
-     * se lanzará una excepción.
+     * Este método se debe usar para buscar un usuario por email, si no se
+     * encuentra se lanzará una excepción.
      * 
      * @param email
      * @return UsuarioDTO
@@ -204,10 +245,11 @@ public class UsuarioService implements UsuarioServiceInterface {
                 Optional<UsuarioEntity> var = usuarioRepository.findByEmail(email);
                 if (var.isPresent()) {
                     UsuarioEntity usuario = var.get();
+                    validarEstado(usuario);
                     return new UsuarioDTO(usuario.getNombre(), usuario.getEmail(), usuario.getDireccion(),
                             usuario.getCelular());
                 } else {
-                    throw new Personalizado("Error, no se encontró el usuario con este email.");
+                    throw new Personalizado("Error, no se encontró el usuario con este email: " + email);
                 }
             }
         } catch (Personalizado e) {
@@ -218,10 +260,10 @@ public class UsuarioService implements UsuarioServiceInterface {
     }
 
     /**
-     * Este método se debe usar para buscar todos los usuarios existentes, si no hay
+     * Este método se debe usar para buscar todos los usuarios, si no hay
      * usuarios, se lanzará una excepción.
      * 
-     * @return ArrayList
+     * @return ArrayList UsuarioDTO
      * @throws Personalizado
      */
     @Override

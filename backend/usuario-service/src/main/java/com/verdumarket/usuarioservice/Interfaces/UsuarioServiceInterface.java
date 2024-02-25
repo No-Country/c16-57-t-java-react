@@ -3,16 +3,19 @@ package com.verdumarket.usuarioservice.Interfaces;
 import java.util.ArrayList;
 
 import com.verdumarket.usuarioservice.DTO.UsuarioDTO;
+import com.verdumarket.usuarioservice.Entidades.UsuarioEntity;
 import com.verdumarket.usuarioservice.Excepciones.Personalizado;
 
 public interface UsuarioServiceInterface {
 
-    void crearUsuario(String contrasenia, String email, String nombre, String direccion, String celular)
+    UsuarioDTO crearUsuario(UsuarioEntity usuario)
             throws Personalizado;
 
-    void actualizarUsuario(Long id, String contrasenia, String email, String nombre, String direccion, String celular) throws Personalizado;
+    UsuarioDTO actualizarUsuario(Long id, UsuarioEntity usuario) throws Personalizado;
 
-    void borrarUsuario(Long id) throws Personalizado;
+    UsuarioDTO desactivarUsuario(Long id) throws Personalizado;
+
+    UsuarioDTO reactivarUsuario(Long id) throws Personalizado;
 
     UsuarioDTO buscarUsuarioPorId(Long id) throws Personalizado;
 
