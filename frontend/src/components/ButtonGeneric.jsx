@@ -27,7 +27,7 @@ const ButtonGeneric = ({
 
   return (
     <div className="flex flex-col w-full font-custom drop-shadow-2xl" >
-      <Link to={to} delay={2500}>
+      <Link to={to}>
         <button className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}>
          {img && <img src={img} alt={`Imagen de ${img} de Verdumarket`} className={imgClassName}/>
  }         <p >{text}</p>
