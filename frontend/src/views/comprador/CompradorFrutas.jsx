@@ -132,7 +132,7 @@ const frutas = [
 const CompradorFrutas = () => {
   return (
     <>
-    <section className="h-2/8 text-center">
+    <section className="h-2/8 text-center w-full">
         <h1>Frutas</h1>
         <SearchForm/>
     </section>
