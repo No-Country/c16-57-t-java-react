@@ -131,10 +131,10 @@ const frutas = [
 const CompradorFrutas = () => {
   return (
     <>
-    <section className="h-1/5">
+    <section className="h-2/8 text-center">
         <h1>Frutas</h1>
     </section>
-    <section className="flex flex-col h-4/5 gap-2 ">
+    <section className="flex flex-col h-6/8 gap-2 ">
 <h1>verdumarket</h1>
 
 {frutas.map((fruta,index)=>{

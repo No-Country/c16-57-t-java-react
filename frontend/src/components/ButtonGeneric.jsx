@@ -5,7 +5,7 @@ import { RightArrow } from "./Icons/RightArrow";
 const ButtonGeneric = ({
     text,
     to,
-    variant = 'contained',
+    variant ='contained',
     size = 'large',
     className = '',
     img,
@@ -33,10 +33,12 @@ const ButtonGeneric = ({
         <button className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}>
          {img && <img src={img} alt={`Imagen de ${img} de Verdumarket`} className={imgClassName}/>
  }         <p>{text}</p>
- {arrow && <span className="absolute right-0">
+ {/* {arrow && 
+ <span className="absolute right-0">
         <RightArrow/>
  </span>
- }       </button>
+ }       */}
+  </button>
       </Link>
     </div>
   )
