@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { twMerge } from "tailwind-merge";
+import { RightArrow } from "./Icons/RightArrow";
 
 const ButtonGeneric = ({
     text,
@@ -9,7 +10,8 @@ const ButtonGeneric = ({
     className = '',
     img,
     imgClassName ='w-[130px] h-[117.44px] bg-cover bg-no-repeat relative mx-auto my-0',
-}) => {
+    arrow=true
+  }) => {
   const variantClasses = {
     'contained': 'bg-white text-accent hover:bg-primary hover:text-white transition-colors duration-300 ease-in-out',
     'outlined': 'border-2 border-primary',
@@ -30,8 +32,11 @@ const ButtonGeneric = ({
       <Link to={to}>
         <button className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}>
          {img && <img src={img} alt={`Imagen de ${img} de Verdumarket`} className={imgClassName}/>
- }         <p >{text}</p>
-        </button>
+ }         <p>{text}</p>
+ {arrow && <span className="absolute right-0">
+        <RightArrow/>
+ </span>
+ }       </button>
       </Link>
     </div>
   )

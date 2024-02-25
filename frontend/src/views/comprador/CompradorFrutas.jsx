@@ -1,7 +1,6 @@
 import ButtonGeneric from '@components/ButtonGeneric'
 import naranjas from '../../assets/frutas/naranjas.png'
 import peras from '../../assets/frutas/peras.png'
-import { RightArrow } from "@components/Icons/RightArrow";
 
 //! Este componente es un placeholder para la vista de frutas del comprador. debe consumir la data de frutas del backend, se realizará un JSON que simule la data de frutas para el desarrollo de la vista.
 
@@ -140,11 +139,10 @@ const CompradorFrutas = () => {
 
 {frutas.map((fruta,index)=>{
   return(
-    <span className='flex flex-row'>
+    <div className='flex flex-row'>
 
     <ButtonGeneric key={index} text={`${fruta.fruta} ${fruta.unidad?"por unidad":"por kilo"}`} img={peras} imgClassName="rounded-full size-14" size="landscape"/>
-    <RightArrow/>
-    </span>
+    </div>
   )
 })}
 {/* <ButtonGeneric text="Naranjas por Kilo" img={naranjas} imgClassName="rounded-full size-14" size="landscape" to="/comprador/frutas" /> */}
