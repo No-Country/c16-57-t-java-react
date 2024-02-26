@@ -35,8 +35,8 @@ const ButtonGeneric = ({
          {img && <img src={img} alt={`Imagen de ${img} de Verdumarket`} className={imgClassName}/>
  }         
  <div className=" ml-2 justify-start">
-  <span className="justify-start">{text}</span>
-  {text2 && <p className="text-sm">{text2}</p>} 
+  <span className="flex justify-start font-medium">{text}</span>
+  {text2 && <p className="flex text-sm font-light">{text2}</p>} 
   </div>
  {arrow && 
  <span className="absolute right-0">

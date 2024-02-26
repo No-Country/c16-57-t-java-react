@@ -10,10 +10,10 @@ const CompradorHome = ({user= "usuario"}) => {
   return ( 
 
 <div className="flex flex-col items-center justify-center w-full h-full">
-    <section className='text-accent w-full mb-28'>
+    <section className='text-accent font-custom w-full mb-20'>
    <SearchForm />
       <h1 className="text-3xl font-bold text-center">¡Bienvenido {user}!</h1>
-      <p className="text-xl text-center">¿Qué te gustaría comprar hoy?</p>
+      <p className="text-xl text-center font-light">¿Qué te gustaría comprar hoy?</p>
     </section>
    <section className='grid grid-cols-2 gap-4'>
     <ButtonGeneric text="Frutas"       arrow={false} img={naranjas} to="/comprador/frutas"  />     
