@@ -4,6 +4,7 @@ import { RightArrow } from "./Icons/RightArrow";
 
 const ButtonGeneric = ({
     text,
+    text2,
     to,
     variant ='contained',
     size = 'large',
@@ -32,12 +33,16 @@ const ButtonGeneric = ({
       <Link to={to}>
         <button className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}>
          {img && <img src={img} alt={`Imagen de ${img} de Verdumarket`} className={imgClassName}/>
- }         <p>{text}</p>
- {/* {arrow && 
+ }         
+ <div className=" ml-2 justify-start">
+  <span className="justify-start">{text}</span>
+  {text2 && <p className="text-sm">{text2}</p>} 
+  </div>
+ {arrow && 
  <span className="absolute right-0">
         <RightArrow/>
  </span>
- }       */}
+ }      
   </button>
       </Link>
     </div>

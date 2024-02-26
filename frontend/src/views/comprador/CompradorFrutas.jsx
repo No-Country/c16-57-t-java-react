@@ -132,20 +132,21 @@ const frutas = [
 const CompradorFrutas = () => {
   return (
     <>
-    <section className="h-2/8 text-center w-full">
-        <h1>Frutas</h1>
+    <section className="h-2/8  sticky top-0 text-center w-full mb-4 z-20 bg-[#EDF3ED] rounded-lg">
+        <h1 className='text-3xl font-custom text-accent mb-2'>Frutas</h1>
         <SearchForm/>
     </section>
-    <section className="flex flex-col h-6/8 gap-2 ">
+    <section className="flex flex-col h-6/8 gap-3 ">
 {frutas.map((fruta,index)=>{
   return(
-    <div className='flex flex-row'>
+    <div className="">
 
-    <ButtonGeneric key={index} text={`${fruta.fruta} ${fruta.unidad?"por unidad":"por kilo"}`} img={peras} imgClassName="rounded-full size-14" size="landscape"/>
+    <ButtonGeneric key={index} text={fruta.fruta} text2={fruta.unidad?"por unidad":"por kilo"} img={peras} imgClassName="rounded-full size-14" size="landscape" className=""/>
+    
     </div>
   )
 })}
-{/* <ButtonGeneric text="Naranjas por Kilo" img={naranjas} imgClassName="rounded-full size-14" size="landscape" to="/comprador/frutas" /> */}
+
     </section>
     </>
   );
