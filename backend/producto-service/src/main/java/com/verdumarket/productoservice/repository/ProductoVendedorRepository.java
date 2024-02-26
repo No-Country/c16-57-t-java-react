@@ -2,6 +2,7 @@ package com.verdumarket.productoservice.repository;
 
 import com.verdumarket.productoservice.model.ProductoVendedor;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
@@ -11,9 +12,10 @@ import java.util.Optional;
 @Repository
 public interface ProductoVendedorRepository extends JpaRepository<ProductoVendedor, Long> {
 
-    Optional<ProductoVendedor> findByPrecioUnidad(BigDecimal precioUnidad);
+    @Query("SELECT a FROM ProductoVendedor a WHERE a.precioUnidad <= :precioUnidad")
+    List<ProductoVendedor> findByPrecioUnidadWithJPQL(BigDecimal precioUnidad);
 
     List<ProductoVendedor> findByIdVendedor(Long idVendedor);
 
-    Optional<ProductoVendedor> findByStock(Integer stock);
+    List<ProductoVendedor> findByStock(Integer stock);
 }

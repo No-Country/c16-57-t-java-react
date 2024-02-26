@@ -28,8 +28,9 @@ public class ProductoGenericoController {
     // Listar todos los Productos Genericos de la bd
 
     @GetMapping("/listarProductosGen")
-    public List<ProductoGenerico> productoGenericoGetAll()
+    public List<ProductoGenerico> productoGenericoGetAll() throws ResourceNotFoundException
     {
+        new ResourceNotFoundException("Productos encontrados: : ");
         return productoGenericoRepository.findAll();
     }
 
