@@ -29,13 +29,13 @@ const ButtonGeneric = ({
   const baseClasses = "rounded-xl aspect-square w-full"
 
   return (
-    <div className="flex flex-col w-full font-custom drop-shadow-2xl" >
+    <div className="flex flex-col w-full font-custom-200 drop-shadow-2xl" >
       <Link to={to}>
         <button className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}>
          {img && <img src={img} alt={`Imagen de ${img} de Verdumarket`} className={imgClassName}/>
  }         
- <div className=" ml-2 justify-start">
-  <span className="flex justify-start font-medium">{text}</span>
+ <div className={size==="landscape"?"ml-2 justify-start":""}>
+  <span className={size==="landscape"?"flex justify-start font-medium":""}>{text}</span>
   {text2 && <p className="flex text-sm font-light">{text2}</p>} 
   </div>
  {arrow && 

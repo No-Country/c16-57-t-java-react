@@ -16,7 +16,7 @@ export default {
           "neutral-content": "#095012",
           "neutral-100": "#D5DFD7",
           "accent": "#095012",
-          "background": "#EDF3ED",
+          "background": "#F6F6F6",
         },
       },
     ],
@@ -27,7 +27,7 @@ export default {
         '#095012':'#095012',
       },
       fontFamily:{
-        custom:['Rubik','sans-serif']
+        custom:['Montserrat','sans-serif']
       },
       transitionTimingFunction: {
         'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
