@@ -17,7 +17,6 @@ import VendedorHome from "@views/vendedor/VendedorHome"
 import VendedorSearch from "@views/vendedor/VendedorSearch"
 import VendedorHistory from "@views/vendedor/VendedorHistory"
 import VendedorProfile from "@views/vendedor/VendedorProfile"
-import CompradorFrutas from "@views/comprador/CompradorFrutas"
 
 
 function App() {
