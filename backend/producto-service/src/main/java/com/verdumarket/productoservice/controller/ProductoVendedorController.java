@@ -16,19 +16,18 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/productoVendedor")
 public class ProductoVendedorController {
 
     @Autowired
     private ProductoVendedorRepository productoVendedorRepository;
 
-    @GetMapping("/listar")
+    @GetMapping("/listProdVendedor")
     public List<ProductoVendedor> productoVendedorGetAll()
     {
         return productoVendedorRepository.findAll();
     }
 
-    @GetMapping("/listarPorId/{id}")
+    @GetMapping("/listProdVendedorId/{id}")
     public ResponseEntity<ProductoVendedor> getProductoVendedor(@PathVariable(value = "id") Long idProductoVendedor)
     throws ResourceNotFoundException {
 
@@ -39,7 +38,7 @@ public class ProductoVendedorController {
 
 
 
-    @GetMapping("/listarPorVendedorId/{idVendedor}")
+    @GetMapping("/listProdVendedorIdVendedor/{idVendedor}")
     public ResponseEntity<List<ProductoVendedor>> productoVendedorGetIdVendedor(@PathVariable(value = "idVendedor") Long idVendedor)
             throws ResourceNotFoundException {
 
@@ -52,7 +51,7 @@ public class ProductoVendedorController {
         return ResponseEntity.ok(productoVendedores);
     }
 
-    @GetMapping("/listarPorPrecioUnidad/{precioUnidad}")
+    @GetMapping("/listProdVendedorPrecioUnidad/{precioUnidad}")
     public ResponseEntity <List<ProductoVendedor>> productoVendedorGetByPrecioUnidad(@PathVariable(name = "precioUnidad")BigDecimal precioUnidad)
         throws ResourceNotFoundException {
 
@@ -64,7 +63,7 @@ public class ProductoVendedorController {
         return ResponseEntity.ok(productoVendedors);
     }
 
-    @GetMapping("/listarPorStock/{stock}")
+    @GetMapping("/listProdVendedorStock/{stock}")
     public ResponseEntity <List<ProductoVendedor>> productoVendedorGetByStock(@PathVariable(name = "stock") Integer stock)
         throws ResourceNotFoundException {
 
@@ -77,13 +76,13 @@ public class ProductoVendedorController {
         return ResponseEntity.ok(productoVendedor);
     }
 
-    @PostMapping("/nuevoProductoVendedor")
+    @PostMapping("/nuevoProdVendedor")
     public ProductoVendedor createProductoVendedor(@Validated @RequestBody ProductoVendedor productoVendedor)
     {
         return productoVendedorRepository.save(productoVendedor);
     }
 
-    @PutMapping("/editarProductoVendedor/{id}")
+    @PutMapping("/editarProdVendedor/{id}")
     public ResponseEntity <ProductoVendedor> updateProductoVendedor(@PathVariable(name = "id") Long idProductoVendedor
         , @Validated @RequestBody ProductoVendedor productoDetails) throws ResourceNotFoundException {
 
@@ -100,7 +99,7 @@ public class ProductoVendedorController {
         return ResponseEntity.ok(updateProducto);
     }
 
-    @DeleteMapping("/borrarProductosVendedorId/{id}")
+    @DeleteMapping("/borrarProdVendedorId/{id}")
     public Map<String, Boolean> deleteProductoVendedor(@PathVariable(value = "id") Long idProductoVendedor)
         throws ResourceNotFoundException
     {

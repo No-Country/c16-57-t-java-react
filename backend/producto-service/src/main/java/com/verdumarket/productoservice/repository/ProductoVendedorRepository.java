@@ -16,6 +16,6 @@ public interface ProductoVendedorRepository extends JpaRepository<ProductoVended
     List<ProductoVendedor> findByPrecioUnidadWithJPQL(BigDecimal precioUnidad);
 
     List<ProductoVendedor> findByIdVendedor(Long idVendedor);
-
+    @Query("SELECT a FROM ProductoVendedor a WHERE a.stock >= :stock")
     List<ProductoVendedor> findByStock(Integer stock);
 }

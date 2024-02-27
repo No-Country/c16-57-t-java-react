@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/productos")
 public class ProductoGenericoController {
 
     @Autowired
@@ -27,7 +26,7 @@ public class ProductoGenericoController {
 
     // Listar todos los Productos Genericos de la bd
 
-    @GetMapping("/listarProductosGen")
+    @GetMapping("/listProductosGen")
     public List<ProductoGenerico> productoGenericoGetAll() throws ResourceNotFoundException
     {
         new ResourceNotFoundException("Productos encontrados: : ");
@@ -35,7 +34,7 @@ public class ProductoGenericoController {
     }
 
     // Buscar un único Producto Generico por Id
-    @GetMapping("/listarProductosGenId/{id}")
+    @GetMapping("/listProductosGenId/{id}")
     public ResponseEntity<ProductoGenerico> getProductoGenericoId(@PathVariable(value = "id") Long idProductoGenerico)
             throws ResourceNotFoundException {
 
@@ -45,7 +44,7 @@ public class ProductoGenericoController {
     }
 
     // Obtener lista de todos los Productos Genericos por el nombre del producto
-    @GetMapping("/listarProductosGenNombre/{nombreProducto}")
+    @GetMapping("/listProductosGenNombre/{nombreProducto}")
     public ResponseEntity<List<ProductoGenerico>> getProductoGenericoNombre(@PathVariable(value = "nombreProducto") String nombreProducto) throws ResourceNotFoundException {
 
         List<ProductoGenerico> productoGenerico = productoGenericoRepository.findByNombreProductoContaining(nombreProducto);
@@ -58,7 +57,7 @@ public class ProductoGenericoController {
 
 
     // Obtener lista de todos los Productos genericos por el tipo de unidad
-    @GetMapping("/listarProductosGenTipoUnidad/{tipoUnidad}")
+    @GetMapping("/listProductosGenTipoUnidad/{tipoUnidad}")
     public ResponseEntity <List<ProductoGenerico>> productoGenericoGetByTipoUnidad(@PathVariable(name = "tipoUnidad") String tipoUnidad)
         throws ResourceNotFoundException {
 
@@ -72,7 +71,7 @@ public class ProductoGenericoController {
     }
 
     // Listar Producto Generico por id Categoria
-    @GetMapping("/listarProductosGenCategoria/{categoria}")
+    @GetMapping("/listProductosGenCategoria/{categoria}")
     public ResponseEntity <List<ProductoGenerico>> productoGenericoGetByCategoria(@PathVariable(name = "categoria") Categoria categoria)
         throws ResourceNotFoundException {
 

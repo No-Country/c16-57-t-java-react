@@ -13,19 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categoria")
 public class CategoriaController {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    @GetMapping("/listarCategoria")
+    @GetMapping("/listCategoria")
     public List<Categoria> categoriaGetAll()
     {
         return categoriaRepository.findAll();
     }
 
-    @GetMapping("/listarCategoriaId/{id}")
+    @GetMapping("/listCategoriaId/{id}")
     public ResponseEntity<Categoria> getCategoriaId(@PathVariable(value="id") Long idCategoria)
         throws ResourceNotFoundException {
 
@@ -34,7 +33,7 @@ public class CategoriaController {
         return ResponseEntity.ok(categoria);
     }
 
-    @GetMapping(value = "/listarCategoriaNombre/{nombre}", produces = "application/json")
+    @GetMapping(value = "/listCategoriaNombre/{nombre}", produces = "application/json")
     public ResponseEntity<Categoria> getCategoriaNombre(@PathVariable(value = "nombre") String nombre)
         throws ResourceNotFoundException {
 
