@@ -23,7 +23,6 @@ public class ProductoGenericoController {
     @Autowired
     private ProductoGenericoRepository productoGenericoRepository;
 
-
     // Listar todos los Productos Genericos de la bd
 
     @GetMapping("/listProductosGen")

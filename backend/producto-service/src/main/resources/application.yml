@@ -10,8 +10,8 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
   datasource:
     url: jdbc:mysql://localhost:3308/producto_service?serverTimezone=UTC
-    username: admin
-    password: 542345
+    username: root
+    password: root
 
 eureka:
   client:
