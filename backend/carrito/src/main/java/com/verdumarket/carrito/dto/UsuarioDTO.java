@@ -17,5 +17,5 @@ public class UsuarioDTO {
     private String direccion;
     private String celular;
     private boolean esAdmin;
-    private int estado;
+    private Estado estado;
 }
