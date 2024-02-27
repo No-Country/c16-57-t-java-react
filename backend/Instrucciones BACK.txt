@@ -1,0 +1,12 @@
+Instalar InteliJ (comunity)
+
+Instalar OpenJDK v17.0.9
+
+Instalar MySQL (configurar usuario: root y pass: root, para no cambiarlos en código).
+
+Cargar los Distintos Microservicios como módulos en inteliJ -> son carpetas con un punto azul.
+Nota: si no se cargan con un puntito azul -> click derecho en el POM.xml de cada uno y buscar la opción de cargar como módulo.
+
+Darle Run (la flechita verde) en cada microservicio empezando por eureka -> src -> main -> java -> EurekaApplication. y ahí dar RUN.
+
+Hacer las pruebas necesarias.

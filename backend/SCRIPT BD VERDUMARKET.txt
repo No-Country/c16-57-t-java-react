@@ -1,0 +1,36 @@
+-- Usar la base de datos producto-servicio
+USE producto_service;
+
+-- Inserts para la tabla categoria
+INSERT INTO categoria (descripcion, nombre) VALUES ('Categoría de Verduras', 'Verduras');
+INSERT INTO categoria (descripcion, nombre) VALUES ('Categoría de Frutas', 'Frutas');
+INSERT INTO categoria (descripcion, nombre) VALUES ('Categoría de Frutos Secos', 'Frutos Secos');
+INSERT INTO categoria (descripcion, nombre) VALUES ('Categoría de Productos lácteos', 'Productos lácteos');
+INSERT INTO categoria (descripcion, nombre) VALUES ('Categoría de Hierbas y Especias', 'Hierbas y Especias');
+
+-- Inserts para la tabla producto_generico
+INSERT INTO producto_generico (descripcion, nombre_producto, tipo_unidad, categoria) VALUES ('Tomate fresco', 'Tomate', 'Unidad', 1);
+INSERT INTO producto_generico (descripcion, nombre_producto, tipo_unidad, categoria) VALUES ('Manzana fresca', 'Manzana', 'Unidad', 2);
+INSERT INTO producto_generico (descripcion, nombre_producto, tipo_unidad, categoria) VALUES ('Almendras crudas', 'Almendras', 'Gramo', 3);
+INSERT INTO producto_generico (descripcion, nombre_producto, tipo_unidad, categoria) VALUES ('Leche entera', 'Leche', 'Litro', 4);
+INSERT INTO producto_generico (descripcion, nombre_producto, tipo_unidad, categoria) VALUES ('Orégano seco', 'Orégano', 'Gramo', 5);
+
+-- Inserts para la tabla producto_vendedor
+INSERT INTO producto_vendedor (estado_producto, id_vendedor, precio_unidad, stock, id_producto) VALUES (1, 1, 2.50, 100, 1);
+INSERT INTO producto_vendedor (estado_producto, id_vendedor, precio_unidad, stock, id_producto) VALUES (1, 1, 1.75, 150, 2);
+INSERT INTO producto_vendedor (estado_producto, id_vendedor, precio_unidad, stock, id_producto) VALUES (1, 2, 4.00, 75, 3);
+INSERT INTO producto_vendedor (estado_producto, id_vendedor, precio_unidad, stock, id_producto) VALUES (1, 2, 3.25, 200, 4);
+
+
+-- Usar la base de datos usuario_service
+USE usuario_service;
+
+-- Inserts para la tabla usuario
+INSERT INTO usuario (celular, contrasenia, direccion, email, es_admin, estado, nombre) 
+VALUES ('123456789', 'contraseña1', 'Calle Principal 123', 'usuario1@example.com', b'0', 'ACTIVO', 'Usuario 1');
+
+INSERT INTO usuario (celular, contrasenia, direccion, email, es_admin, estado, nombre) 
+VALUES ('987654321', 'contraseña2', 'Avenida Central 456', 'usuario2@example.com', b'0', 'ACTIVO', 'Usuario 2');
+
+INSERT INTO usuario (celular, contrasenia, direccion, email, es_admin, estado, nombre) 
+VALUES ('555555555', 'adminpass', 'Plaza Mayor 789', 'admin@example.com', b'1', 'ACTIVO', 'Administrador');

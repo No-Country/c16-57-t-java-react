@@ -1,0 +1,133 @@
+ENPOINTS:
+
+PRODUCTO:
+
+localhost:443/PRODUCTO-SERVICE/
+
+------ PRODUCTO GENERICO
+
+// Listar todos los Productos Genericos de la bd
+	/listProductosGen
+
+// Buscar un único Producto Generico por Id
+	/listProductosGenId/{id}
+
+//Obtener lista de todos los Productos Genericos por el nombre del producto
+	/listProductosGenNombre/{nombreProducto}
+
+// Obtener lista de todos los Productos genericos por el tipo de unidad
+	/listProductosGenTipoUnidad/{tipoUnidad}
+
+// Listar Producto Generico por id Categoria
+	/listProductosGenCategoria/{categoria}
+
+// Crear nuevo Producto Generico
+	/nuevoProductosGen
+
+// Editar Producto Generico por Id:
+	/editarProductosGen/{id}")
+
+// Eliminar un producto generico por Id:
+	/borrarProductosGenId/{id}"
+
+
+
+---- CATEGORIA
+
+	/listCategoria
+
+	/listCategoriaId/{id}
+
+	/listCategoriaNombre/{nombre}
+
+
+
+---- PRODUCTO VENDEDOR
+
+	/listProdVendedor
+
+	/listProdVendedorId/{id}
+
+	/listProdVendedorIdVendedor/{idVendedor}
+
+	/listProdVendedorPrecioUnidad/{precioUnidad}
+
+	/listProdVendedorStock/{stock}
+
+	/nuevoProdVendedor
+
+	/editarProdVendedor/{id}
+
+	/borrarProdVendedorId/{id}
+
+
+
+CARRITO:
+
+localhost:443/CARRITO-SERVICE/
+
+-------- ITEM CARRITO
+
+// Se pasa el id del item carrito (no de producto) y se elimina lógicamente.
+	/cancelarItem/{id}
+
+
+-------- CARRITO
+
+
+	/listarCarritosPorComprador/{idComprador}
+
+//se le pasa un json con 2 item, idVendedor y idComprador.
+	/buscarCarritoPorCompradorVendedor
+
+//se busca por idCarrito
+	/traerCarritoPorId/{id}
+
+//Se pasa un json del item y se guarda en el carrito (ver datos en word).
+	/guardarItem
+
+
+------- ORDEN
+
+	/listarOrdenesConsumidor/{idConsumidor}
+
+
+	/listarOrdenesVendedor/{idVendedor}")
+
+
+	/crearOrdenPorIdCarrito/{idCarrito}
+
+
+-----------------------------------------------------------------
+
+
+USUARIO:
+
+localhost:443/USUARIO-SERVICE/usuario/
+
+------ USUARIO
+
+//se pasa json con datos usuario.
+	/crear
+
+//buscar todos los usuarios en la base de datos.
+	/buscar
+
+//buscar un usuario por ID
+	/buscar/id/{id}
+
+//buscar un usuario por email.
+	/buscar/email/{email}")
+
+//para actualizar un usuario en la base de datos
+	/actualizar/{id}
+
+//dar de baja un usuario en la base de datos.
+	/desactivar/{id}
+
+//Este método se debe utilizar para reactivar un usuario en la base de datos.
+	/reactivar/{id}
+
+
+
+
