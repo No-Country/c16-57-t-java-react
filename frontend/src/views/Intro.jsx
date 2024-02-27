@@ -26,7 +26,7 @@ const Intro = () => {
       
       <section className="flex flex-col items-center gap-4 mx-auto">
         <AppLogo />
-        <h2 className="text-2xl font-light text-left text-accent">
+        <h2 className="text-2xl font-normal text-left text-accent">
           Frutas y Verduras Orgánicas
         </h2>
         <CarouselIntro paragraphs={introParagraphs} intervalMs={2500}/>

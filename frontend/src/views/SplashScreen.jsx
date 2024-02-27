@@ -24,7 +24,7 @@ const SplashScreen = ({
       *:duration-1000 *:animate-in *:fade-in *:slide-in-from-bottom
     `}>
       <AppLogo size="large" className="shadow-xl drop-shadow-md" />
-      <h1 className="text-xl font-light text-primary">
+      <h1 className="text-3xl font-custom text-accent">
         VerduMarket
       </h1>
     </section>

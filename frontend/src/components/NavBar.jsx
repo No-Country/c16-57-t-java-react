@@ -16,10 +16,11 @@ const NavBar = () => {
     isActive ? "nav-active" : "",
   ].join(" ");
 
-  // TODO: Agregar sombra a NavBar según Figma
-
-  return (
-    <nav className="p-0 text-xs text-center h-14 rounded-t-xl btm-nav bg-primary/25 text-accent">
+  //: Agregar sombra a NavBar según Figma
+//*HECHO
+  
+return (
+    <nav className="p-0 text-xs text-center h-14 rounded-t-xl btm-nav bg-[#D5DFD7] text-accent">
       <NavLink to={`${modo}/home`} className={navLinkClasses}>
         <IconHome />
         <span className="sr-only btm-nav-label">Home</span>
