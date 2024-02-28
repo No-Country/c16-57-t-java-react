@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.verdumarket</groupId>
 	<artifactId>producto-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>producto-service</name>
 	<description>Servidor producto para VerduMarket</description>
 	<properties>

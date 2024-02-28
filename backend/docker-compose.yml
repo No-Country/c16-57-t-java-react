@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  eureka:
+    build: eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - verdumarket_network
+
+  usuario-service:
+    build: usuario-service
+    ports:
+      - "9001:9001"
+    networks:
+      - verdumarket_network
+
+  producto-service:
+    build: producto-service
+    ports:
+      - "9002:9002"
+    networks:
+      - verdumarket_network
+
+  gateway:
+    build: gateway
+    ports:
+      - "443:443"
+    networks:
+      - verdumarket_network
+
+  carrito:
+    build: carrito
+    ports:
+      - "9003:9003"
+    networks:
+      - verdumarket_network
+
+networks:
+  verdumarket_network:
+

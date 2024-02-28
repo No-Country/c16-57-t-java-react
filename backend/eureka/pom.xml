@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.verdumarket</groupId>
 	<artifactId>eureka</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>eureka</name>
 	<description>Servidor Eureka para VerduMarket</description>
 	<properties>

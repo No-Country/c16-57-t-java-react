@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.verdumarket</groupId>
 	<artifactId>carrito</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>carrito</name>
 	<description>Carrito para verduMarket</description>
 	<properties>
