@@ -7,6 +7,10 @@ services:
       - "8761:8761"
     networks:
       - verdumarket_network
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
   usuario-service:
     build: usuario-service
@@ -14,6 +18,10 @@ services:
       - "9001:9001"
     networks:
       - verdumarket_network
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
   producto-service:
     build: producto-service
@@ -21,6 +29,10 @@ services:
       - "9002:9002"
     networks:
       - verdumarket_network
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
   gateway:
     build: gateway
@@ -28,6 +40,10 @@ services:
       - "443:443"
     networks:
       - verdumarket_network
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
   carrito:
     build: carrito
@@ -35,7 +51,10 @@ services:
       - "9003:9003"
     networks:
       - verdumarket_network
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
 networks:
   verdumarket_network:
-
