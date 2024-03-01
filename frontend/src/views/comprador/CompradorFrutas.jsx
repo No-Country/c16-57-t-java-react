@@ -346,7 +346,7 @@ export const frutas = [
 const CompradorFrutas = () => {
   return (
     <>
-    <section className="h-2/8  sticky top-0 text-center w-full mb-4 z-20 bg-[#EDF3ED] rounded-lg">
+    <section className="h-2/8  sticky top-0 text-center w-full mb-4 z-20 bg-[#F6F6F6] rounded-lg">
         <h1 className='text-3xl font-custom font-medium text-accent mb-2'>Frutas</h1>
         <SearchForm/>
     </section>

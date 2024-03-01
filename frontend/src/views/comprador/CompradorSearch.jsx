@@ -4,12 +4,19 @@ import { useVegetal } from "../../hooks/useVegetal"
 import { useCallback,useState } from "react"
 import debounce from "just-debounce-it"
 import IconSearch from "@components/Icons/IconSearch"
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const CompradorSearch = () => {
 
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    // Navegar a la vista anterior
+    navigate(-1);
+  };
 
 const {search,updateSearch,error} = useSearch();
 const {vegetales,getVegetales,loading}= useVegetal({search})
@@ -34,7 +41,13 @@ const handleChange = (event) => {
 }
   return (
     <div className="flex flex-col">
+      <section className="flex flex-row mb-5">
+        <button className="" onClick={handleGoBack}>
+
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>
+        </button>
       <h1 className="text-2xl font-custom-200 text-accent">Buscá tus productos</h1>
+      </section>
      <header>
       <form onSubmit={handleSubmit}>
         <div className="flex-1 relative flex items-center">
@@ -68,7 +81,9 @@ const handleChange = (event) => {
 
 export default CompradorSearch
 
+
 // 
+
 /* <div className='main-container w-[327px] h-[32px] bg-[#e3e9e4] rounded-[16px] border-solid border border-[rgba(9,80,18,0.3)] relative overflow-hidden mx-auto my-0'>
 <div className='w-[24px] h-[24px] bg-[url(../assets/images/dc14343d-4237-433e-8043-c02194d259a1.png)] bg-cover bg-no-repeat absolute top-[3px] left-[287.113px] overflow-hidden' />
 <span className="flex w-[65px] h-[11.75px] justify-center items-start font-['Montserrat'] text-[12px] font-normal leading-[11.75px] text-[#095012] tracking-[0.4px] absolute top-[6px] left-[5.113px] text-center whitespace-nowrap z-[1]">
