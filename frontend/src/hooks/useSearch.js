@@ -6,8 +6,8 @@ export const useSearch = () =>{
     const [error,setError] = useState(null);
 
     useEffect(()=>{
-        if(search.match(/^\d+$/)){
-            setError('No se puede buscar con números')
+        if(!search.match(/^[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+$/) && search!==''){
+            setError('Sólo Letras por favor!')
             return
         } 
         setError(null)
