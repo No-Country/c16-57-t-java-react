@@ -4,8 +4,9 @@ import { useVegetal } from "../../hooks/useVegetal"
 import { useCallback,useState } from "react"
 import debounce from "just-debounce-it"
 import IconSearch from "@components/Icons/IconSearch"
+import IconLeftArrow from "@components/Icons/IconLeftArrow"
 import { useNavigate } from "react-router-dom";
-
+IconLeftArrow
 
 
 
@@ -43,8 +44,7 @@ const handleChange = (event) => {
     <div className="flex flex-col">
       <section className="flex flex-row mb-5">
         <button className="" onClick={handleGoBack}>
-
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>
+            <IconLeftArrow/>    
         </button>
       <h1 className="text-2xl font-custom-200 text-accent">Buscá tus productos</h1>
       </section>

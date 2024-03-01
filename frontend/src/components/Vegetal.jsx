@@ -15,16 +15,22 @@ import ButtonGeneric from '@components/ButtonGeneric'
 }
 
 function VegetalesNoResults(){
+
     return (
-        <p>No hay Resultados</p>
+        <p className=' text-center text-custom-100 text-xl text-accent'>No hay Resultados</p>
     )
 }
 
 export function Vegetales ({vegetales}){
-    const hasVegetales = vegetales?.length > 0;
+    const hasVegetales = vegetales?.length >= 1;
     return (
-        hasVegetales
+       vegetales && hasVegetales
          ? <ListOfVegetal vegetales={vegetales}/>
-         : <VegetalesNoResults/>
+
+         : 
+         (
+!vegetales? <p></p>:
+             <VegetalesNoResults/>
+         )
     )
 }
