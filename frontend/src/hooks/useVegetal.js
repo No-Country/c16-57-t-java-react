@@ -4,6 +4,7 @@ import { searchVegetales } from "../services/vegetales";
 
 export const useVegetal = ({search}) =>{
 
+  console.log(search)
   const [vegetales,setVegetales] = useState([]);
   const [loading,setLoading] = useState(false);
  const [error,setError] = useState(null);

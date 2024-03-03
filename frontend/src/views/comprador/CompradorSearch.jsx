@@ -73,7 +73,7 @@ const handleChange = (event) => {
      </header>
 
      <main className="w-[100%] mt-4 p-2">
-      {loading ? <p>Esta Cargando</p> : <Vegetales vegetales={vegetales}/>}
+      {loading ? <p>Está Cargando</p> : <Vegetales vegetales={vegetales}/>}
      </main>
     </div>
   )

@@ -1,7 +1,7 @@
 const API_KEY = '123456';
 const API_Comida = 'https://www.themealdb.com/api/json/v1/1/search.php?s' // =<Comida> para buscar 
 
-const productos = [
+export const productos = [
     {
         "id": 1,
         "nombre": "Manzana",
@@ -9,6 +9,27 @@ const productos = [
         "vendedor": "Frutas Doña María",
         "unidad": false
     },
+    {
+      "id": 112,
+      "nombre": "Manzana",
+      "precio": 0.6,
+      "vendedor": "Frutas Doña Pocha",
+      "unidad": true
+  },
+  {
+    "id": 114,
+    "nombre": "Manzana",
+    "precio": 3.1,
+    "vendedor": "Almacen de Carlitos",
+    "unidad": false
+},
+{
+  "id": 1224,
+  "nombre": "Manzana",
+  "precio": 2.2,
+  "vendedor": "NatuMarket",
+  "unidad": false
+},
     {
         "id": 2,
         "nombre": "Banana",

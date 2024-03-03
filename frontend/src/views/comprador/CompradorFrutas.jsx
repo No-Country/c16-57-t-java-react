@@ -355,7 +355,7 @@ const CompradorFrutas = () => {
   return(
     <div className="">
 
-    <ButtonGeneric key={index} text={fruta.nombre} text2={fruta.Unidad?"por unidad":"por kilo"} img={peras} imgClassName="rounded-full size-14" size="landscape" className=""/>
+    <ButtonGeneric key={index} text={fruta.nombre} text2={fruta.Unidad?"por unidad":"por kilo"} img={peras} imgClassName="rounded-full size-14" size="landscape" className="" to={`/comprador/${fruta.nombre}`}/>
     
     </div>
   )
