@@ -7,7 +7,7 @@ import ButtonGeneric from '@components/ButtonGeneric'
         {
             vegetales.map(vegetal => (
 
-                <ButtonGeneric key={vegetal.id} text={vegetal.nombre} text2={vegetal.Unidad?"por unidad":"por kilo"} img={manzanas} imgClassName="rounded-full size-14" size="landscape" className=""/>
+                <ButtonGeneric key={vegetal.id} text={vegetal.nombre} text2={vegetal.Unidad?"por unidad":"por kilo"} img={manzanas} imgClassName="rounded-full size-14" size="landscape" to={`/comprador/${vegetal.nombre}`} className=""/>
             ))
         }
      </ul>
