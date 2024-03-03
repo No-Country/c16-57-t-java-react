@@ -48,9 +48,9 @@ const Product = ({
     </button>
  <div className=" absolute inset-0 mt-24 text-center  justify-center">
     <p className="text-center font-custom-200 -mb-2 text-[16px]">
-          ${precio}{" "}{unidad?"por Un.":"por Kg."}
+          ${Math.ceil(precio)}{" "}{unidad?"por Un.":"por Kg."}
     </p>
-  {vendedor && <p className="text-[14px]  font-custom font-light">{vendedor}</p>} 
+  {vendedor && <p className="text-[14px] font-custom overflow-hidden overflow-ellipsis whitespace-nowrap font-light">{vendedor}</p>} 
   <div className="flex flex-row justify-center ">
     <IconStars/>
     <IconStars/>
