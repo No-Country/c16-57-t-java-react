@@ -1,6 +1,7 @@
 package com.verdumarket.usuarioservice.Entidades;
 
 import com.verdumarket.usuarioservice.Enums.Estado;
+import com.verdumarket.usuarioservice.Enums.TipoUsuario;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
@@ -39,6 +40,9 @@ public class UsuarioEntity {
     private String celular;
 
     private boolean esAdmin;
+
+    @Enumerated(EnumType.STRING)
+    private TipoUsuario tipo;
 
     @Enumerated(EnumType.STRING)
     private Estado estado;
