@@ -1,5 +1,7 @@
+import ButtonGeneric from '@components/ButtonGeneric'
+import SearchForm from '@components/SearchForm'
 
-
+import cilantro from '../../assets/aromaticas/cilantro.png'
 const CompradorAromaticas = () => {
   
   const aromaticas =[
@@ -35,7 +37,24 @@ const CompradorAromaticas = () => {
     },
   ]
   return (
-    <div>CompradorAromaticas</div>
+    <>
+    <section className="h-2/8  sticky top-0 text-center w-full mb-4 z-20 bg-[#F6F6F6] rounded-lg">
+        <h1 className='text-3xl font-custom font-medium text-accent mb-2'>Aromaticas</h1>
+        <SearchForm/>
+    </section>
+    <section className="flex flex-col h-6/8 gap-3 ">
+{aromaticas.map((fruta,index)=>{
+  return(
+    <div className="">
+
+    <ButtonGeneric key={index} text={fruta.nombre} text2={fruta.Unidad?"por unidad":"por kilo"} img={cilantro} imgClassName="rounded-full size-14" size="landscape" className="" to={`/comprador/${fruta.nombre}`}/>
+    
+    </div>
+  )
+})}
+
+    </section>
+    </>
   )
 }
 
