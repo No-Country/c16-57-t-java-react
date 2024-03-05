@@ -1,5 +1,4 @@
-const API_KEY = '123456';
-const API_Comida = 'https://www.themealdb.com/api/json/v1/1/search.php?s' // =<Comida> para buscar 
+import { URL_ALLPR, URL_PRCAT, URL_PRNAME } from '../URLPath' 
 
 export const productos = [
     {
@@ -255,24 +254,47 @@ export const productos = [
 
 export async function searchVegetales({search}){
 
-    return (
-        productos.filter(producto => producto.nombre.toLowerCase().includes(search.toLowerCase()))
-    )
+    
 
-    // try{
-    //     const response = await fetch(API_Comida + `=${search}`)
-    //     const json = await response.json();
-    //     const vegetales = json.meals;
-    //     console.log(vegetales);
+    try{
+        const response = await fetch(URL_ALLPR)
+        console.log(response)
+        const json = await response.json();
         
-    //     return vegetales?.map(vegetal =>(
-    //     {
-    //         id:vegetal.idMeal,
-    //         title:vegetal.strMeal,
-    //         poster:vegetal.strMealThumb 
-
-    //     }))
-    // } catch(error){
-    //     throw new Error('Error searching for vegetales')
-    // }
+        console.log(json);
+        
+        return json.filter(producto => producto.nombreProducto.toLowerCase().includes(search.toLowerCase()))
+    } catch(error){
+        throw new Error('Error searching for vegetales')
+    }
 }
+
+export async function searchVegetalesByCat({categoria}){
+
+    try{
+        const response = await fetch(`${URL_PRCAT}${categoria}`)
+        console.log(response)
+        return await response.json();
+        
+        console.log(json);
+    } catch(error){
+        throw new Error('Error searching for vegetales')
+    }
+}
+
+export async function searchVegetalesByName({nombre}){
+
+    try{
+        const response = await fetch(`${URL_PRNAME}${nombre}`)
+        console.log(response)
+        return await response.json();
+        
+        console.log(json);
+    } catch(error){
+        throw new Error('Error searching for vegetales')
+    }
+}
+
+/**return (
+        productos.filter(producto => producto.nombre.toLowerCase().includes(search.toLowerCase()))
+    ) */

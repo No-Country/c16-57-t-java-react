@@ -1,16 +1,27 @@
 import { useParams } from "react-router-dom"
-import { productos } from "../../services/vegetales"
-import { useEffect } from "react"
+import { searchVegetalesByName } from "../../services/vegetales"
+import { useEffect, useState } from "react"
 import uvas from "../../assets/frutas/naranjas.png"
 import peras from "../../assets/frutas/naranjaUn.png"
 import Product from "../../components/Product"
 const CompradorProductoNombre = () => {
-const { nombre } = useParams()
+
+const [result,setResult]= useState([])
+  const { nombre } = useParams()
 
 useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const result = await searchVegetalesByName({nombre});
+      setResult(result);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };  
 
+  fetchData();
 }, [nombre])
-const result = productos.filter(producto => producto.nombre === nombre)
+
 
 console.log(result)
 return (
@@ -24,11 +35,11 @@ return (
           </section>
           <section className="grid grid-cols-2 h-4/5 items-start gap-2">
 
-    {result.map((fruta,index)=>{
+    {result.map(f=>{
       return(
         
       
-      <Product key={fruta.id} nombre={fruta.nombre} vendedor={fruta.vendedor} unidad={fruta.unidad}  precio={fruta.precio} img={peras} imgClassName="rounded-full  relative mt-1 mr-0.5"className="" />
+      <Product key={f.idProductoGenerico} nombre={f.nombreProducto} vendedor={`La ${f.nombreProducto} Loca`} unidad={f.tipoUnidad}  precio={Math.random()*9} img={peras} imgClassName="rounded-full  relative mt-1 mr-0.5"className="" />
           
           
         )
