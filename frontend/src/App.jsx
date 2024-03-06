@@ -17,6 +17,7 @@ import VendedorHome from "@views/vendedor/VendedorHome"
 import VendedorSearch from "@views/vendedor/VendedorSearch"
 import VendedorHistory from "@views/vendedor/VendedorHistory"
 import VendedorProfile from "@views/vendedor/VendedorProfile"
+import HistorialCompras from "./views/comprador/HistorialCompras"
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
 
         <Route path="/comprador/search" element={<CompradorSearch />}/>
         <Route path="/comprador/history" element={<CompradorHistory />}/>
+        <Route path="/comprador/history/pedidos" element={<HistorialCompras/>}/>
         <Route path="/comprador/profile" element={<CompradorProfile />}/>
         
         <Route path="/vendedor/home" element={<VendedorHome />}/>
