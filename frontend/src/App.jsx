@@ -12,6 +12,7 @@ import CompradorFrutas from "@views/comprador/CompradorFrutas"
 import CompradorVerduras from "@views/comprador/CompradorVerduras"
 import CompradorAromaticas from "@views/comprador/CompradorAromaticas"
 import CompradorFrutosSecos from "./views/comprador/CompradorFrutosSecos"
+import CompradorProductoNombre from "./views/comprador/CompradorProductoNombre"
 
 import VendedorHome from "@views/vendedor/VendedorHome"
 import VendedorSearch from "@views/vendedor/VendedorSearch"
@@ -36,6 +37,8 @@ function App() {
         <Route path="/comprador/verduras" element={<CompradorVerduras />}/>
         <Route path="/comprador/aromaticas" element={<CompradorAromaticas />}/>
         <Route path="/comprador/frutos-secos" element={<CompradorFrutosSecos />}/>
+        <Route path="/comprador/:nombre" element={<CompradorProductoNombre />}/>
+
 
         <Route path="/comprador/search" element={<CompradorSearch />}/>
         <Route path="/comprador/history" element={<CompradorHistory />}/>

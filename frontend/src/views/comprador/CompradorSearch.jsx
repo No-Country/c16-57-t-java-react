@@ -3,12 +3,21 @@ import { useSearch } from "../../hooks/useSearch"
 import { useVegetal } from "../../hooks/useVegetal"
 import { useCallback,useState } from "react"
 import debounce from "just-debounce-it"
-
+import IconSearch from "@components/Icons/IconSearch"
+import IconLeftArrow from "@components/Icons/IconLeftArrow"
+import { useNavigate } from "react-router-dom";
+IconLeftArrow
 
 
 
 const CompradorSearch = () => {
 
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    // Navegar a la vista anterior
+    navigate(-1);
+  };
 
 const {search,updateSearch,error} = useSearch();
 const {vegetales,getVegetales,loading}= useVegetal({search})
@@ -32,31 +41,52 @@ const handleChange = (event) => {
   debouncedGetVegetales(newQuery);
 }
   return (
-    <div className="flex flex-col gap-4 items-center  w-full h-full">
-     <h3 className="text-2xl">Verduras</h3>
-     <header className="w-full">
+    <div className="flex flex-col">
+      <section className="flex flex-row mb-5">
+        <button className="" onClick={handleGoBack}>
+            <IconLeftArrow/>    
+        </button>
+      <h1 className="text-2xl font-custom-200 text-accent">Buscá tus productos</h1>
+      </section>
+     <header>
       <form onSubmit={handleSubmit}>
-        <section className="flex relative items-center">
+        <div className="flex-1 relative flex items-center">
           <input onChange={handleChange} 
            value={search} name='search'
             autoFocus 
             placeholder="Buscar"
-            className=" rounded-2xl w-full py-2 pl-5 pr-11"/>
-           <svg className="absolute right-5 fill-[#99eff0]" 
-           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width={20} height={20}>
-            <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
-           </svg> 
-        </section>
+            className="w-full h-[32px] px-6 border-2 border-primary/50 rounded-[16px] 
+            font-custom placeholder:text-accent
+            focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent relative overflow-hidden mx-auto my-0 bg-[#e3e9e4] "/>
+           <button 
+          type="submit" 
+          className={`
+            flex items-center justify-center aspect-square h-full bg-transparent text-primary rounded-md absolute right-0
+            focus:outline-none focus:border-accent focus:border-2 focus:ring-1 focus:ring-accent focus:bg-neutral/50 focus:text-accent
+            `}>
+          <IconSearch className="w-6 h-6 text-white" />
+        </button>
+        </div>
       </form>
-      {error && <p style={{color:'red'}}>{error}</p>}
+      {error && <p className="text-red-600 p-2 text-xl text-center">{error}</p>}
 
      </header>
 
-     <main className="w-[100%] ">
-      {loading ? <p>Esta Cargando</p> : <Vegetales vegetales={vegetales}/>}
+     <main className="w-[100%] mt-4 p-2">
+      {loading ? <p>Está Cargando</p> : <Vegetales vegetales={vegetales}/>}
      </main>
     </div>
   )
 }
 
 export default CompradorSearch
+
+
+// 
+
+/* <div className='main-container w-[327px] h-[32px] bg-[#e3e9e4] rounded-[16px] border-solid border border-[rgba(9,80,18,0.3)] relative overflow-hidden mx-auto my-0'>
+<div className='w-[24px] h-[24px] bg-[url(../assets/images/dc14343d-4237-433e-8043-c02194d259a1.png)] bg-cover bg-no-repeat absolute top-[3px] left-[287.113px] overflow-hidden' />
+<span className="flex w-[65px] h-[11.75px] justify-center items-start font-['Montserrat'] text-[12px] font-normal leading-[11.75px] text-[#095012] tracking-[0.4px] absolute top-[6px] left-[5.113px] text-center whitespace-nowrap z-[1]">
+  Buscar
+</span>
+</div> */
