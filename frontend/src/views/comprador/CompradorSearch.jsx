@@ -6,7 +6,7 @@ import debounce from "just-debounce-it"
 import IconSearch from "@components/Icons/IconSearch"
 import IconLeftArrow from "@components/Icons/IconLeftArrow"
 import { useNavigate } from "react-router-dom";
-IconLeftArrow
+
 
 
 
