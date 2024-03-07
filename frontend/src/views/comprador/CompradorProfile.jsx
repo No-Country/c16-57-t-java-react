@@ -1,8 +1,10 @@
 import ModeSwitch from "@components/ModeSwitch";
+import Perfil from "../../components/Perfil";
 
 const CompradorProfile = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full gap-4">
+    <div className="flex flex-col  justify-center w-full h-full gap-4">
+    <Perfil/>
       <ModeSwitch />
     </div>
   )
