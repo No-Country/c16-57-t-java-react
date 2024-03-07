@@ -38,10 +38,10 @@ const Product = ({
   }
 
   return (
-    <div className="flex flex-col w-full font-custom-200 drop-shadow-2xl" >
-      <Link to={to}>
+    <div className="flex flex-col w-full font-custom-200 drop-shadow-lg h-full" >
+      <Link to={to} className="h-full">
         <button className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}>
-         {img && <img src={img} alt={`Imagen de ${img} de Verdumarket`} className="relative mb-14 object-cover"/>
+         {img && <img src={img} alt={`Imagen de ${img} de Verdumarket`} className="relative mb-14 object-cover "/>
  }         
  <button onClick={toggleFavorito} className="left-32 absolute inset-0 border-red-400">
       {isFavorito ? '❤️' : '🤍'}

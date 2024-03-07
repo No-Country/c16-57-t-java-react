@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { twMerge } from "tailwind-merge";
+import { RightArrow } from "./Icons/RightArrow";
 
 const ButtonNav = ({
     /* texto a mostrar */
@@ -28,10 +29,11 @@ const ButtonNav = ({
   const baseClasses = "rounded-xl aspect-square w-full"
 
   return (
-    <div className="flex flex-col w-full gap-2">
-      <Link to={to} className="bottom-2">
-        <button className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}>
-          {text}
+    <div className="flex flex-col w-full gap-2 hover:scale-105 active:scale-105">
+      <Link to={to} className="shadow-xl rounded-xl py-2  px-2">
+        <button className='flex justify-center items-center  w-full relative text-[#095012] '>
+          {text} 
+          <RightArrow/>
         </button>
       </Link>
     </div>

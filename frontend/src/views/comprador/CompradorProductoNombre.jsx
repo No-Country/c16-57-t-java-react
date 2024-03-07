@@ -20,15 +20,21 @@ return (
           <h1 className="text-center justify-start text-2xl font-custom-200 text-accent mb-2">
             {nombre}
         </h1>
-        <img src={uvas} alt="" className="rounded-3xl h-[150px] drop-shadow-2xl"/>
+        <img src={uvas} alt="" className="rounded-3xl h-[150px] drop-shadow-xl"/>
           </section>
-          <section className="grid grid-cols-2 h-4/5 items-start gap-2">
+          <section className="grid grid-cols-2 grid-rows-2 h-4/5 items-start gap-3">
 
     {result.map((fruta,index)=>{
       return(
         
       
-      <Product key={fruta.id} nombre={fruta.nombre} vendedor={fruta.vendedor} unidad={fruta.unidad}  precio={fruta.precio} img={peras} imgClassName="rounded-full  relative mt-1 mr-0.5"className="" />
+      <Product key={fruta.id} 
+         nombre={fruta.nombre} 
+         vendedor={fruta.vendedor} 
+         unidad={fruta.unidad}  
+         precio={fruta.precio} 
+         img={peras} imgClassName="rounded-full  relative mt-1 mr-0.5"
+         className="h-full" />
           
           
         )
