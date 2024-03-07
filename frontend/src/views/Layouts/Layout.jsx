@@ -28,7 +28,7 @@ const Layout = ({
 
       {/* Hide the footer on the intro and landing pages */}
       {isNavHidden ? null : (
-        <footer>
+        <footer className="relative">
           <NavBar />
         </footer>
       )}

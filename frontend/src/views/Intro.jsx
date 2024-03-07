@@ -3,6 +3,7 @@ import CarouselIntro from '@components/CarouselIntro'
 import imagenIntro from '@/assets/imagenIntro.jpg'
 import AppLogo from '@components/AppLogo';
 
+
 const introParagraphs = [
   'El mejor lugar donde se encuentran consumidores y productores de productos orgánicos',
   'Sin vueltas. Sin intermediarios',
@@ -33,7 +34,7 @@ const Intro = () => {
       </section>
 
       {/* TODO: Botones deberían ser para Iniciar sesión y registrarse */}
-      <footer className="flex flex-col w-full gap-2 mb-14">
+      <footer className="flex  w-full gap-2 mb-14">
           <ButtonNav text="Comprar" to="/comprador/home" />
           <ButtonNav text="Vender " to="/vendedor/home" variant="outlined"/>
       </footer>

@@ -14,7 +14,7 @@ const ButtonGeneric = ({
     arrow=true
   }) => {
   const variantClasses = {
-    'contained': 'bg-white text-accent hover:bg-primary hover:text-white transition-colors duration-300 ease-in-out',
+    'contained': 'bg-white text-accent   transition-colors duration-300 ease-in-out',
     'outlined': 'border-2 border-primary',
     'transparent': 'bg-transparent',
   }; 
@@ -29,7 +29,7 @@ const ButtonGeneric = ({
   const baseClasses = "rounded-xl aspect-square w-full"
 
   return (
-    <div className="flex flex-col w-full font-custom-200 drop-shadow-2xl" >
+    <div className="flex flex-col w-full font-custom-200 drop-shadow-lg hover:scale-105 active:scale-105 " >
       <Link to={to}>
         <button className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}>
          {img && <img src={img} alt={`Imagen de ${img} de Verdumarket`} className={imgClassName}/>
@@ -39,9 +39,9 @@ const ButtonGeneric = ({
   {text2 && <p className="flex text-sm font-light">{text2}</p>} 
   </div>
  {arrow && 
- <span className="absolute right-0">
+ 
         <RightArrow/>
- </span>
+ 
  }      
   </button>
       </Link>

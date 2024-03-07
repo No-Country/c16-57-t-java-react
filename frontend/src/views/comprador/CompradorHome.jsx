@@ -29,7 +29,7 @@ const CompradorHome = ({user= "usuario"}) => {
           <ButtonGeneric text="Aromaticas"   arrow={false} img={cilantro} to="/comprador/aromaticas"   />   
           <ButtonGeneric text="Frutos Secos" arrow={false} img={nueces}   to="/comprador/frutos-secos"/>   
    </section>
-    <ButtonGeneric text="Productores" size="landscape" className="gap-x-14 mt-4" img={productores} imgClassName="size-13"/> 
+    <ButtonGeneric text="Productores" size="landscape" className="gap-x-14 mt-4 flex items-center pl-3  relative " img={productores} imgClassName="size-13"/> 
  </div>
   )
 }
