@@ -54,6 +54,7 @@ const handleChange = (event) => {
           <input onChange={handleChange} 
            value={search} name='search'
             autoFocus 
+            autoComplete="off"
             placeholder="Buscar"
             className="w-full h-[32px] px-6 border-2 border-primary/50 rounded-[16px] 
             font-custom placeholder:text-accent
